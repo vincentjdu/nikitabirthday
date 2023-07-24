@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arrivée au Chemin de Traverse</title>
+  <link href="https://fonts.googleapis.com/css2?family=Courgette&display=swap" rel="stylesheet">
+  <style>
+    /* Utilise la police Courgette pour le texte principal de la page */
+    body {
+      font-family: "Courgette", cursive;
+      background-image: url("https://www.hello-la-floride.com/wp-content/uploads/diagon-alley-le-chemin-de-traverse-universal-studios-orlando.jpg");
+      background-size: cover;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: rgba(255, 255, 255, 0.9);
+      border-radius: 8px;
+    }
+
+    h2 {
+      font-size: 32px;
+      color: #4CAF50;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 18px;
+      line-height: 1.6;
+      margin-bottom: 15px;
+    }
+
+    /* Style pour les liens des boutiques */
+    .shop-link {
+      display: block;
+      width: 200px;
+      margin: 10px auto;
+      padding: 15px;
+      background-color: #4CAF50;
+      color: #FFFFFF;
+      text-align: center;
+      text-decoration: none;
+      font-size: 18px;
+      border-radius: 8px;
+      transition: background-color 0.3s;
+      cursor: pointer;
+      font-family: "Courgette", cursive;
+    }
+
+    .shop-link:hover {
+      background-color: #45a049;
+    }
+
+    /* Contrôles de l'ambiance sonore */
+    .audio-controls {
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      z-index: 9999;
+    }
+
+    .play-pause-button {
+      background-color: #4b4b4b;
+      color: #ffffff;
+      font-size: 16px;
+      padding: 8px 12px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-family: "Courgette", cursive;
+    }
+  </style>
+</head>
+
+<body>
+    <audio id="ambianceSonore">
+        <source src="C:\Users\Vincent\Desktop\01-08\Sons\foule.mp3" type="audio/mpeg">
+        <!-- Ajoutez d'autres sources si nécessaire pour une compatibilité avec différents navigateurs -->
+        <!-- Par exemple : <source src="chemin/vers/mon-fichier-audio.ogg" type="audio/ogg"> -->
+      </audio>
+      <div class="play-button" onclick="toggleAmbianceSonore()">Play</div>
+
+  <div class="container">
+    <h2>Tu es de retour au chemin de traverse</h2>
+    <p>Tu as réussi à récupérer quelques pièces d'une monnaie qui te semble inconnue. Ca devrait suffire à acheter tes fournitures si cet Octave a bien calculé son coup. Visite les boutiques et récupère tes fournitures avant de pouvoir quitter cet endroit.</p>
+
+    <!-- Boutons pour les différentes boutiques -->
+    <a class="shop-link" href="ollivander.html">Visiter Ollivander's</a>
+    <a class="shop-link" href="boutiquechaudron.html">Visiter la Boutique de Chaudrons Magiques</a>
+    <a class="shop-link" href="boutiquebalais.html">Visiter la Boutique de Balais</a>
+    <a class="shop-link" href="boutiquelivres.html">Visiter la Boutique de Vêtements et de Livres</a>
+    <a class="shop-link" href="chemintraverseexpress.html">Se rendre au chemin de traverse express</a>
+  </div>
+
+  <!-- Contrôles de l'ambiance sonore -->
+  <div class="audio-controls">
+    <button class="play-pause-button" id="playPauseButton" onclick="toggleAmbianceSonore()">Play / Pause</button>
+  </div>
+
+  <script>
+    var ambianceSonore = document.getElementById('ambianceSonore');
+    var playPauseButton = document.getElementById('playPauseButton');
+    var isPlaying = true;
+
+    // Fonction pour démarrer ou arrêter l'ambiance sonore
+    function toggleAmbianceSonore() {
+      if (isPlaying) {
+        ambianceSonore.pause();
+        playPauseButton.textContent = "Play";
+      } else {
+        ambianceSonore.play();
+        playPauseButton.textContent = "Pause";
+      }
+      isPlaying = !isPlaying;
+    }
+  </script>
+</body>
+
+</html>

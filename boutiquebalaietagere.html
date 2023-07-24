@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Boutique de Balais - Ouvrir l'Armoire</title>
+  <link href="https://fonts.googleapis.com/css2?family=Courgette&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: "Courgette", cursive;
+      background-image: url("https://heroicwriter.files.wordpress.com/2016/12/snitch_pottermore.jpg");
+      background-size: cover;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: rgba(105, 105, 105, 0.9);
+      border-radius: 8px;
+      color: #ffffff;
+    }
+
+    h2 {
+      font-size: 32px;
+      color: #a7b142  ;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 18px;
+      line-height: 1.6;
+      margin-bottom: 15px;
+    }
+
+    .action-button {
+      display: block;
+      width: 200px;
+      margin: 20px auto;
+      padding: 15px;
+      background-color: #4CAF50;
+      color: #FFFFFF;
+      text-align: center;
+      text-decoration: none;
+      font-size: 18px;
+      border-radius: 8px;
+      transition: background-color 0.3s;
+      cursor: pointer;
+      font-family: "Courgette", cursive;
+    }
+
+    .action-button:hover {
+      background-color: #45a049;
+    }
+
+    /* Ajout du style pour le bouton Play/Pause */
+    .audio-controls {
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      z-index: 9999;
+    }
+
+    .play-pause-button {
+      background-color: #4b4b4b;
+      color: #ffffff;
+      font-size: 16px;
+      padding: 8px 12px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-family: "Courgette", cursive;
+    }
+  </style>
+</head>
+<body>
+  <audio id="backgroundAudio" src="C:\Users\Vincent\Desktop\01-08\Sons\vifdor.mp3"></audio>
+  <div class="audio-controls">
+    <button class="play-pause-button" id="playPauseButton" onclick="toggleBackgroundAudio()">Play</button>
+  </div>
+  <div class="container">
+    <h2>Boutique de Balais - Ouvrir l'Armoire</h2>
+    <p>Tu prends ton courage à deux mains et décides d'ouvrir l'armoire devant les yeux ébahis du couple. D'un geste ferme, l'armoire s'ouvre, et le vif d'or en profite pour sortir à une vitesse folle, fonçant droit vers toi.</p>
+    <p>Le vif d'or vient percuter ton épaule droite, provoquant un bruit de ferraille et des étincelles argentées et dorées. À ta grande surprise, le vif d'or éclate en pleins de morceaux, et un petit papier tombe doucement vers le sol, se posant délicatement sur la tête de madame Flume.</p>
+    <p>Elle prend le papier dans les mains et le lit à voix haute. Il s'agit d'un numéro, le 2. Elle repose le papier sur le comptoir et se met à ranger le désordre provoqué par le vif rebelle. D'un coup de baguette magique, elle remet en place les objets déplacés lors de la lutte féroce. Monsieur Flume s'occupe de te fournir un balai en échange de quelques pièces et te remercie grandement pour ta participation.</p>
+    <p>Il t'offre également un bon de réduction pour l'achat de ton prochain balai et te fait la publicité du Nimbus 23 qui sortira prochainement. Tu quittes l'établissement avec un léger mal à l'épaule mais plein de souvenirs inoubliables.</p>
+    <div class="action-button" onclick="retournerCheminTraverse()">Retourner au Chemin de Traverse</div>
+  </div>
+
+  <script>
+    var backgroundAudio = document.getElementById('backgroundAudio');
+    var playPauseButton = document.getElementById('playPauseButton');
+    var isPlaying = false;
+
+    // Fonction pour démarrer ou arrêter l'audio de fond
+    function toggleBackgroundAudio() {
+      if (isPlaying) {
+        backgroundAudio.pause();
+        playPauseButton.textContent = "Play";
+      } else {
+        backgroundAudio.play();
+        playPauseButton.textContent = "Pause";
+      }
+      isPlaying = !isPlaying;
+    }
+
+    function retournerCheminTraverse() {
+      // Rediriger vers la page du Chemin de Traverse
+      window.location.href = "chemintraverse2.html";
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Boutique Ollivander's</title>
+  <link href="https://fonts.googleapis.com/css2?family=Courgette&display=swap" rel="stylesheet">
+  <style>
+    /* Utilise la police Courgette pour le texte principal de la page */
+    body {
+      font-family: "Courgette", cursive;
+      background-image: url("https://i.pinimg.com/originals/aa/86/99/aa8699b467016d6758b327c9ea55db7f.jpg");
+      background-size: cover;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: rgba(105, 105, 105, 0.9);
+      border-radius: 8px;
+    }
+
+    h2 {
+      font-size: 32px;
+      color: #8c933f;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 18px;
+      line-height: 1.6;
+      margin-bottom: 15px;
+    }
+
+    /* Contrôles de l'ambiance sonore */
+    .audio-controls {
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      z-index: 9999;
+    }
+
+    .play-pause-button {
+      background-color: #4b4b4b;
+      color: #ffffff;
+      font-size: 16px;
+      padding: 8px 12px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-family: "Courgette", cursive;
+    }
+
+    .action-button {
+      display: block;
+      width: 200px;
+      margin: 20px auto;
+      padding: 15px;
+      background-color: #4CAF50;
+      color: #FFFFFF;
+      text-align: center;
+      text-decoration: none;
+      font-size: 18px;
+      border-radius: 8px;
+      transition: background-color 0.3s;
+      cursor: pointer;
+      font-family: "Courgette", cursive;
+    }
+
+    .action-button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+
+<body>
+  <audio id="ambianceSonore" src="C:\Users\Vincent\Desktop\01-08\Sons\clochette.mp3"></audio>
+
+  <div class="container">
+    <h2>Bienvenue chez Ollivander's !</h2>
+    <p>Tu entres dans la boutique d'Ollivander's. Une ambiance calme reigne à l'intérieur de cette boutique contrastant avec l'activité grouillante du chemin de traverse. </p>
+    <p>Tu es acceuillis par monsieur Ollivander qui s'adresse à toi avec beaucoup de bienveillance. </p>
+    <p>"Bonjour Albert je pensais que vous n'alliez jamais venir... votre baguette vous attend depuis quelques temps déjà. Tenez prenez celle ci, je pense qu'elle vous conviendra à merveille." </p>
+    <p>Ollivander présente devant toi une boite poussiereuse, rectangulaire, de couleur vert pomme. Il l'ouvre délicatement et se présente face à toi une baguette couleur d'ébène et arrondis sur le dessus.</p>
+    <p>Tu saisi le petit manche de la baguette dans ta main et tu regardes déconcerté monsieur Ollivander. Celui ci te regarde les sourcils relevés et la bouche entre ouverte. Il semble attendre quelque chose de ta part.</p>
+    <p>Après une seconde d'hésitation, monsieur Ollivander s'adresse à toi en disant "Et bien faites le geste ! Je ne comprends pas pourquoi tout ces jeunes gens n'osent pas le faire."</p>
+       <button class="action-button" onclick="makeGesture()">Faire le geste</button>
+  </div>
+
+  <!-- Contrôles de l'ambiance sonore -->
+  <div class="audio-controls">
+    <button class="play-pause-button" id="playPauseButton" onclick="toggleAmbianceSonore()">Play / Pause</button>
+  </div>
+
+  <script>
+    var ambianceSonore = document.getElementById('ambianceSonore');
+    var playPauseButton = document.getElementById('playPauseButton');
+    var isPlaying = true;
+
+    // Fonction pour démarrer ou arrêter l'ambiance sonore
+    function toggleAmbianceSonore() {
+      if (isPlaying) {
+        ambianceSonore.pause();
+        playPauseButton.textContent = "Play";
+      } else {
+        ambianceSonore.play();
+        playPauseButton.textContent = "Pause";
+      }
+      isPlaying = !isPlaying;
+    }
+
+    function makeGesture() {
+      var container = document.querySelector(".container");
+      container.innerHTML = `
+        <p>Tu esquisse un geste avec ton bras et ton poignet comme pour lancer un sort dont tu ne connais pas le but.</p>
+        <p>Le geste est un peu brute et monsieur Ollivander semble faire un pas en arrière à la vue de cette excès d'engagement.</p>
+        <p>Tout à coup, la baguette émet un bruit étrange et aigu, une petite lumière fine file à travers la boutique laissant une trainée grisatre derrière elle. Dans sa course cette lueur émet un bruit de ballon de baudruche se dégonflant et disparait sans prévenir.</p>
+        <p>Monsieur Ollivander toujours souriant s'adresse alors à toi. "Je suis désolé, cela ne semble pas être la baguette qui vous convient. Je vais en chercher une autre."</p>
+        <button class="action-button" onclick="choosePhoenix()">Je me sens plus attirée par les plumes de phénix</button>
+        <button class="action-button" onclick="chooseUnicorn()">Je me sens plus attirée par les crins de licorne</button>
+      `;
+    }
+
+    function choosePhoenix() {
+      var container = document.querySelector(".container");
+      container.innerHTML = `
+        <p>Tu te demandes si cette baguette était formée autour d'une plume de phoenix et tu te met à songer à ce qu'aurait pu être le résultat si ça avait été le cas.</p>
+        <p>Monsieur Ollivander, s'étant perdu entre ses étagères remplies de boites de toutes les couleurs, sort sa tête et te regarde fixement dans le yeux en disant "Les plumes de phénix, vraiment ? Intéressant."</p>
+        <p>Tu sembles étonné car tu ne pensais pas avoir dis ça à haute voix.</p>
+        <p>Monsieur Ollivander te tend à nouveau une nouvelle boite contenant une nouvelle baguette</p>
+        <button class="action-button" onclick="makeGesture()">Faire le geste</button>
+      `;
+    }
+
+    function chooseUnicorn() {
+      var container = document.querySelector(".container");
+      container.innerHTML = `
+        <p>Tu penses alors à la licorne et à ce qu'aurait pu être le résultat si tu utilisait une baguette confectionnée à partir du crin de cette animal mythologique. Tu t'adresses à monsieur Ollivander pour savoir si il a en stock.</p>
+        <p>Un peu étonné de ta démarche, monsieur Ollivander te répond malgré tout "Les crins de licorne, c'est une bonne décision. Essayons une dernière baguette pour vous.</p>
+        <button class="action-button" onclick="showCongratulations()">Faire le geste</button>
+      `;
+    }
+
+    function showCongratulations() {
+      var container = document.querySelector(".container");
+      container.innerHTML = `
+        <p>La baguette entre tes mains émet une lumière étincelante, illuminant la pièce tout entière.</p>
+        <p>Tu ressens une profonde sensation de bien-être, et tu as l'agréable impression que cette baguette était faite pour toi.</p>
+        <p>"Je suis ravi de vous annoncer que vous avez trouvé votre baguette parfaite !" Dit alors monsieur Ollivander. Il retourne sans bruit à l'arrière boutique et te laisse contempler la baguette.</p>
+        <p> En prenant la boite en main tu aperçois un symbole étrange inscrit en relief. Ca ressemble à un zéro.</p>
+        <button class="action-button" onclick="goToCheminDeTraverse()">Revenir au Chemin de Traverse</button>
+      `;
+    }
+
+    function goToCheminDeTraverse() {
+      // Rediriger l'utilisateur vers la page du Chemin de Traverse (remplacez "chemin_de_traverse.html" par le nom de votre fichier HTML)
+      window.location.href = "chemintraverse2.html";
+    }
+  </script>
+</body>
+
+</html>

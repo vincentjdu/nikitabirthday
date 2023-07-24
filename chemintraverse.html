@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arrivée au Chemin de Traverse</title>
+  <link href="https://fonts.googleapis.com/css2?family=Courgette&display=swap" rel="stylesheet">
+  <style>
+     /* Utilise la police Courgette pour le texte principal de la page */
+    body {
+      font-family: "Courgette", cursive;
+      background-image: url("https://www.hello-la-floride.com/wp-content/uploads/diagon-alley-le-chemin-de-traverse-universal-studios-orlando.jpg");
+      background-size: cover;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: rgba(143, 143, 143, 0.9);
+      border-radius: 8px;
+    }
+
+    h2 {
+      font-size: 32px;
+      color: #4CAF50;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 18px;
+      line-height: 1.6;
+      margin-bottom: 15px;
+    }
+
+    /* Style pour les liens des boutiques */
+    .shop-link {
+      display: block;
+      width: 200px;
+      margin: 10px auto;
+      padding: 15px;
+      background-color: #4CAF50;
+      color: #FFFFFF;
+      text-align: center;
+      text-decoration: none;
+      font-size: 18px;
+      border-radius: 8px;
+      transition: background-color 0.3s;
+      cursor: pointer;
+    }
+
+    .shop-link:hover {
+      background-color: #45a049;
+    }
+
+    /* Style pour le formulaire de la Banque Gringotts */
+    .gringotts-form {
+      display: none;
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .gringotts-form input {
+      display: block;
+      width: 250px;
+      margin: 10px auto;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+
+    .gringotts-form button {
+      display: block;
+      width: 150px;
+      margin: 10px auto;
+      padding: 15px;
+      background-color: #4CAF50;
+      color: #FFFFFF;
+      text-align: center;
+      text-decoration: none;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      transition: background-color 0.3s;
+      cursor: pointer;
+    }
+
+    .gringotts-form button:hover {
+      background-color: #45a049;
+    }
+
+    /* Style pour l'annonce de message */
+    .announcement {
+      display: none;
+      text-align: center;
+      font-size: 18px;
+      color: #FF0000;
+      margin-top: 20px;
+    }
+
+    /* Style pour le texte sur les gobelins */
+    .goblin-text {
+      display: none;
+      text-align: center;
+      font-size: 18px;
+      color: #000000;
+      margin-top: 20px;
+    }
+      .error-message {
+      display: none;
+      text-align: center;
+      font-size: 18px;
+      color: #FF0000;
+      margin-bottom: 20px;
+    }
+    .play-button {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      cursor: pointer;
+      background-color: #4b4b4b;
+      color: #000000;
+      padding: 5px 10px;
+      border-radius: 5px;
+    }
+    .know-account-button {
+      display: none;
+      width: 200px;
+      margin: 10px auto;
+      padding: 15px;
+      background-color: #4CAF50;
+      color: #FFFFFF;
+      text-align: center;
+      text-decoration: none;
+      font-size: 18px;
+      border-radius: 8px;
+      transition: background-color 0.3s;
+      cursor: pointer;
+    }
+
+    .know-account-button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <audio id="ambianceSonore">
+    <source src="C:\Users\Vincent\Desktop\01-08\Sons\foule.mp3" type="audio/mpeg">
+    <!-- Ajoutez d'autres sources si nécessaire pour une compatibilité avec différents navigateurs -->
+    <!-- Par exemple : <source src="chemin/vers/mon-fichier-audio.ogg" type="audio/ogg"> -->
+  </audio>
+  <div class="play-button" onclick="toggleAmbianceSonore()">Play / Pause</div>
+
+  <div class="container">
+    <!-- Titre précédent supprimé -->
+
+    <p>Une rue étroite et biscornue se présente face à toi. Tu fais quelques pas pour en sortir et tu débouche dans une plus grande où de normbreuses personnes vetues de tenues étranges s'activent sans jeter un regard vers toi.</p> 
+     <p>Tu es arrivée au Chemin de Traverse, le cœur du monde magique !</p> 
+     <p>Une foule clairssemée s'active autour des boutiques aux noms les plus farfelus les uns que les autres. Tu comprends vite à quel genre de boutique tu as à faire.</p>
+
+    <!-- Boutons pour les différentes boutiques -->
+    <button class="shop-link" onclick="showErrorMessage('Ollivander')">Visiter Ollivander's</button>
+    <button class="shop-link" onclick="showErrorMessage('Boutique de Balais')">Visiter la Boutique de Balais</button>
+    <button class="shop-link" onclick="showErrorMessage('Boutique de Chaudrons Magiques')">Visiter la Boutique de Chaudrons Magiques</button>
+    <button class="shop-link" onclick="showErrorMessage('Boutique de Vêtements et de Livres')">Visiter la Boutique de Vêtements et de Livres</button>
+    <button class="shop-link" onclick="showGringottsForm()">Visiter la Banque Gringotts</button>
+    <!-- Texte sur les gobelins -->
+    <p class="goblin-text" id="goblinMessage">Tu empruntes l'allée menant à ce qui semble être l'entrée de la banque Gringotts. 
+      L'entrée est penchée et n'inspire pas confiance.
+      Tu t'appretes à pousser la vielle porte en bois mais celle ci s'ouvre devant toi.
+      Tu y decouvres un large hall magnifique décoré de colones et de lustres lumineux. De nombreux gobelins bien habillés s'activent.
+      Ils n'ont pas l'air commodes et te regardent de haut. Tu t'approches du guichet 5, le gobelins présent te fixe avec ses yeux noirs et ses lunettes vissées sur le bout du nez.
+      Il te demande ton numéro de coffre</p>
+
+    <!-- Formulaire de la Banque Gringotts -->
+    <div class="gringotts-form" id="gringottsForm">
+      <input type="text" id="accountNumber" placeholder="Numéro du coffre">
+      <input type="text" id="code" placeholder="Code">
+      <button onclick="submitGringottsForm()">Valider</button>
+      <button class="know-account-button" onclick="askGoblin()">Connaissez-vous mon numéro de compte ?</button>
+    </div>
+   
+    <!-- Annonce de message -->
+    <p class="announcement" id="announcementMessage"></p>
+
+    <!-- Message d'erreur si la Banque Gringotts n'a pas été visitée -->
+    <p class="error-message" id="errorMessage"></p>
+    
+  </div>
+
+  <script>
+     let isGringottsVisited = false;
+    let isAccountVerified = false;
+
+    function showGringottsForm() {
+      const gringottsForm = document.getElementById("gringottsForm");
+      gringottsForm.style.display = "block";
+
+      const goblinMessage = document.getElementById("goblinMessage");
+      goblinMessage.style.display = "block";
+
+      // Cacher le message d'erreur si la Banque Gringotts est visitée
+      const errorMessage = document.getElementById("errorMessage");
+      errorMessage.style.display = "none";
+    }
+
+    function showErrorMessage(shopName) {
+      if (!isGringottsVisited) {
+        const errorMessage = document.getElementById("errorMessage");
+        errorMessage.textContent = "Tu n'as pas d'argent.. Tu devrais d'abord visiter la Banque Gringotts avant de pouvoir visiter les autres boutiques.";
+        errorMessage.style.display = "block";
+      } else {
+        const announcementElement = document.getElementById("announcementMessage");
+        announcementElement.textContent = `Tu n'as pas encore assez d'argent pour visiter la ${shopName}.`;
+      }
+    }
+
+    function submitGringottsForm() {
+    const accountNumber = document.getElementById("accountNumber").value;
+    const code = document.getElementById("code").value;
+
+    // Vérifier si les informations sont correctes
+    if (accountNumber === "0104" && code === "usky") {
+      isGringottsVisited = true;
+      isFormSubmitted = true;
+
+      // Rediriger vers la nouvelle page HTML une fois que le formulaire est soumis avec succès
+      window.location.href = "sortiegringotts.html";
+    } else {
+      const errorMessage = document.getElementById("errorMessage");
+      errorMessage.textContent = "Numéro de compte ou code incorrect. Veuillez réessayer.";
+      errorMessage.style.display = "block";
+      }
+  }
+
+    function askGoblin() {
+      const goblinMessage = document.getElementById("goblinMessage");
+      goblinMessage.textContent = "Le gobelin se penche lentement vers toi. Il stoppe son avance, sa lèvre supérieur se soulève et semble esquisser un grognement de mécontentement. Son bras droit se soulève lentement et vient désigner un chat d'un blanc crémeux et teinté de roux assis bien sagement sur le comptoir d'en face. Mais que fait ce chat ici ? Tu t'approches de lui pour le caresser celui ci s'évapore en laissant derrière lui son collier où est écrit ce qui semble ressembler à une date et un nom...";
+    }
+
+    var ambianceSonore = document.getElementById('ambianceSonore');
+    var isPlaying = false;
+
+    // Fonction pour démarrer ou arrêter l'ambiance sonore
+    function toggleAmbianceSonore() {
+      if (!isPlaying) {
+        ambianceSonore.play();
+      } else {
+        ambianceSonore.pause();
+      }
+      isPlaying = !isPlaying;
+    }
+   </script>
+</body>
+</html>

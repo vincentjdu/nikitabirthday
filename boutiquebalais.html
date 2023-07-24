@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Escape Game Harry Potter - La Boutique "L'Apothicaire"</title>
+  <link href="https://fonts.googleapis.com/css2?family=Courgette&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: "Courgette", cursive;
+      background-image: url("https://heroicwriter.files.wordpress.com/2016/12/snitch_pottermore.jpg");
+      background-size: cover;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: rgba(105, 105, 105, 0.9);
+      border-radius: 8px;
+      color: #ffffff;
+    }
+
+    h1 {
+      font-size: 32px;
+      color: #a7b142;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 18px;
+      line-height: 1.6;
+      margin-bottom: 15px;
+    }
+
+    .choices {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 30px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 18px;
+      background-color: #4CAF50;
+      color: #FFFFFF;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      font-family: "Courgette", cursive;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+    /* Ajout du style pour le bouton Play/Pause */
+    .audio-controls {
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      z-index: 9999;
+    }
+
+    .play-pause-button {
+      background-color: #4b4b4b;
+      color: #ffffff;
+      font-size: 16px;
+      padding: 8px 12px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-family: "Courgette", cursive;
+    }
+  </style>
+</head>
+<body>
+    <audio id="backgroundAudio" src="C:\Users\Vincent\Desktop\01-08\Sons\vifdor.mp3"></audio>
+    <div class="audio-controls">
+      <button class="play-pause-button" id="playPauseButton" onclick="toggleBackgroundAudio()">Play</button>
+    </div>
+    <div class="container">
+        <h1>Bienvenue à la Boutique "L'Apothicaire" !</h1>
+        <p>Alors que tu franchis le seuil de la boutique de balais "L'Apothicaire" dans le célèbre Chemin de Traverse, une vague d'excitation te parcourt. L'air vibrant d'une énergie magique te transporte instantanément dans un univers où la passion pour le vol et l'aventure règne en maître.</p>
+        <p>L'intérieur de la boutique est tout aussi fascinant que l'extérieur. Les murs en bois ancien, ornés d'étagères bien remplies, exhibent une collection de balais de toutes formes et tailles. Des modèles dernier cri aux classiques intemporels, chaque balai semble vous appeler à l'aventure.</p>
+        <p>Le parfum envoûtant de cuir neuf et de bois verni flotte dans l'air, créant une ambiance chaleureuse et rassurante. L'éclairage tamisé des lustres magiques crée des reflets chatoyants sur les boiseries, ajoutant une touche de mystère à l'atmosphère.</p>
+        <p>Tandis que tes yeux s'émerveillent devant la beauté des balais alignés, tu remarques un couple accueillant derrière le comptoir. Mr. et Mrs. Flume, les propriétaires, ont l'air chaleureux et compétents, prêts à t'aider dans ton choix du balai idéal.</p>
+        <p>Soudain, un léger vacarme attire ton attention. Un coffret en bois soigneusement fermé semble s'être ouvert de lui-même, et un petit vif d'or en a profité pour s'échapper dans la boutique. Mr. et Mrs. Flume, habituellement calmes et souriants, se lancent dans une danse joyeuse et fébrile, cherchant à capturer le vif fugitif.</p>
+        <p>Des balais dansent dans les airs, conduisant les propriétaires à travers les allées et les étagères, alors qu'ils tentent de récupérer le précieux vif. Cette scène inattendue ajoute une touche de magie supplémentaire à l'ambiance déjà enchanteresse de la boutique.</p>
+        <p>Le vif d'or semble terminer sa course à toute vitesse dans une armoire de la boutique qui se referme intantanément à l'impacte. Le couple s'adresse alors à toi, souriant mais légèrement essoufflé, et te demande avec entrain :</p>
+        <p>"Cher visiteur, pourrions-nous te demander ton aide pour attraper ce malicieux vif d'or ? Nous avons besoin d'un coup de main pour le capturer, et nous serions infiniment reconnaissants de ta collaboration."</p>
+        <div class="choices">
+          <button onclick="attraperBatte()">Attraper une batte de Quidditch </button>
+          <button onclick="chercherSousEtagere()">Ouvrir l'armoire</button>
+          <button onclick="sabriterDerriereCouple()">S'abriter derrière le couple</button>
+          <button onclick="revenirAuCheminDeTraverse()">Revenir au Chemin de Traverse</button>
+        </div>
+
+  <script>
+     var backgroundAudio = document.getElementById('backgroundAudio');
+    var playPauseButton = document.getElementById('playPauseButton');
+    var isPlaying = false;
+
+    // Fonction pour démarrer ou arrêter l'audio de fond
+    function toggleBackgroundAudio() {
+      if (isPlaying) {
+        backgroundAudio.pause();
+        playPauseButton.textContent = "Play";
+      } else {
+        backgroundAudio.play();
+        playPauseButton.textContent = "Pause";
+      }
+      isPlaying = !isPlaying;
+    }
+    function attraperBatte() {
+      window.location.href = "boutiquebalaibatte.html";
+    }
+
+    function chercherSousEtagere() {
+      window.location.href = "boutiquebalaietagere.html";
+    }
+
+    function sabriterDerriereCouple() {
+      window.location.href = "boutiquebalaisabriter.html";
+    }
+
+    function revenirAuCheminDeTraverse() {
+      window.location.href = "chemintraverse2.html";
+    }
+  </script>
+</body>
+</html>

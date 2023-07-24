@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chemin de Traverse Express</title>
+  <link href="https://fonts.googleapis.com/css2?family=Courgette&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: "Courgette", cursive;
+      background-image: url("https://www.hello-la-floride.com/wp-content/uploads/diagon-alley-le-chemin-de-traverse-universal-studios-orlando.jpg");
+      background-size: cover;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: rgba(255, 255, 255, 0.8);
+      border-radius: 8px;
+    }
+
+    h2 {
+      font-size: 32px;
+      color: #4CAF50;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 18px;
+      line-height: 1.6;
+      margin-bottom: 15px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 18px;
+      font-family: "Courgette", cursive;
+      background-color: #4CAF50;
+      color: #FFFFFF;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    input {
+      font-size: 24px;
+      padding: 8px;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h2>Chemin de Traverse Express</h2>
+    <p>Devant l'entrée majestueuse du Chemin de Traverse Express, tu te tiens face à une immense statue de lion en pierre. Sa crinière flamboyante semble figée dans le vent, tandis que ses yeux enjolivés d'un éclat doré scrutent avec vigilance chaque visiteur qui s'approche.</p>
+
+    <p>La statue, d'une imposante hauteur, se dresse fièrement sur ses pattes puissantes, semblant garder l'accès à ce passage secret avec une détermination sans faille. Chaque détail de la sculpture a été ciselé avec un souci du réalisme saisissant, donnant l'impression que le lion pourrait bondir à tout moment.</p>
+
+    <p>Des motifs complexes, gravés dans la pierre autour de la statue, dépeignent des scènes magiques et mystérieuses, évoquant l'histoire et la grandeur du Chemin de Traverse. Des inscriptions anciennes et énigmatiques sont gravées sur un socle juste en dessous, laissant entendre que le chemin vers l'aventure se trouve là, mais qu'il reste à découvrir.</p>
+
+    <p>La statue, symbole de puissance et de protection, se tient comme la gardienne ultime de ce passage secret menant à la gare Kings Cross, où le légendaire Poudlard Express attend pour emmener les jeunes sorciers vers leur école de sorcellerie bien-aimée.</p>
+
+    <p>Pourtant, malgré l'aura intimidante de la statue, une étrange énigme se pose à quiconque désire pénétrer ce chemin secret. La voix grave de la statue retentit, exigeant un code inconnu à déchiffrer. Les murmures des passants curieux laissent entendre que le code est caché quelque part dans les ruelles du Chemin de Traverse.</p>
+
+    <p>Il est temps de faire preuve de sagacité et d'ingéniosité pour découvrir le code et accéder au Chemin de Traverse Express.</p>
+
+    <div class="form-box">
+        <form onsubmit="return checkCode()">
+          <input type="text" pattern="[0-9]{4}" maxlength="4" required>
+          <button type="submit">Valider</button>
+        </form>
+      </div>
+  
+      <button id="trainButton" style="display: none;" onclick="goToKingsCross()">Aller à la gare Kings Cross</button>
+  
+      <button onclick="retourCheminTraverse()">Revenir au Chemin de Traverse</button>
+      <p id="passageMessage" style="display: none;">Avec un sentiment de victoire et de soulagement, tu énonces le code "0522" devant le lion. 
+        Comme par magie, la statue de lion s'anime et s'incline devant toi, comme pour te montrer le chemin. 
+        Une porte sombre s'ouvre devant toi, te révélant le Chemin de Traverse Express. Il est temps de poursuivre ton voyage vers la gare Kings Cross, à bord du légendaire Poudlard Express. Bon voyage !</p>
+  </div>
+
+    </div>
+  
+    <!-- Ajout de l'élément audio pour le grognement de lion -->
+    <audio id="lionSound">
+      <source src="C:\Users\Vincent\Desktop\01-08\Son\lion.mp3" type="audio/mpeg">
+      Votre navigateur ne supporte pas l'élément audio.
+    </audio>
+  
+    <script>
+      function playLionSound() {
+        var lionSound = document.getElementById("lionSound");
+        lionSound.play();
+      }
+  
+      function checkCode() {
+      var inputCode = document.querySelector("input").value;
+      if (inputCode === "0522") {
+        var trainButton = document.getElementById("trainButton");
+        var passageMessage = document.getElementById("passageMessage");
+        trainButton.style.display = "block";
+        passageMessage.style.display = "block";
+        return false;
+      } else {
+        alert("Ce n'est pas le bon code !");
+        playLionSound(); // Jouer le grognement de lion
+        return false;
+      }
+
+      }
+  
+      function retourCheminTraverse() {
+        window.location.href = "chemintraverse2.html";
+      }
+  
+      function goToKingsCross() {
+        window.location.href = "garekingscross.html";
+      }
+    </script>
+</body>
+
+</html>

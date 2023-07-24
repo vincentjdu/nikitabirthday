@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Paiement des livres</title>
+  <link href="https://fonts.googleapis.com/css2?family=Courgette&display=swap" rel="stylesheet">
+  <style>
+    body {
+        font-family: "Courgette", cursive;
+      background-image: url("https://cdn.unitycms.io/images/7Q-1SHO64B8AqYPtQIvWOv.jpg?op=ocroped&val=1200,1200,1000,1000,0,0&sum=-hH38tQY8T0");
+      background-size: cover;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: rgba(255, 255, 255, 0.8); /* Fond gris */
+    }
+
+    h2 {
+      font-size: 32px;
+      color: #4CAF50;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 18px;
+      line-height: 1.6;
+      margin-bottom: 15px;
+    }
+
+    /* Formulaire */
+    form {
+      display: flex;
+      align-items: center;
+    }
+
+    label {
+      font-size: 18px;
+      margin-right: 10px;
+    }
+
+    input {
+      padding: 8px;
+      font-size: 18px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      font-size: 18px;
+      background-color: #4CAF50;
+      color: #FFFFFF;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    /* Bouton pour revenir au Chemin de Traverse */
+    .back-button {
+      display: none;
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 18px;
+      background-color: #4CAF50;
+      color: #FFFFFF;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h2>Paiement des effets</h2>
+    <p>Alors que tu te faufiles habilement à travers la foule compacte de la boutique, ton sac bien rempli d'affaires pour Poudlard sur ton épaule, tu arrives enfin au comptoir.</p> 
+    <p>Monsieur Fleury est là, mais son regard inquiet parcourt les nombreuses personnes qui se pressent dans le magasin.</p> 
+    <p>D'un ton calme mais préoccupé, il te demande : "As-tu bien récupéré tous les livres dont tu as besoin pour ta rentrée à Poudlard ?"</p>
+
+    <form id="bookForm" onsubmit="return checkBooks()">
+      <label for="bookCount">Nombre de livres :</label>
+      <input type="number" id="bookCount" min="0" required>
+      <button type="submit">Valider</button>
+    </form>
+
+    <p id="message" style="display: none;"></p>
+    <button class="back-button" onclick="goBackToBooks()">Revenir aux livres</button>
+    <button class="back-button" onclick="goBackToTraverse()">Revenir au Chemin de Traverse</button>
+  </div>
+
+  <script>
+    function checkBooks() {
+      var bookCountInput = document.getElementById("bookCount");
+      var bookCount = parseInt(bookCountInput.value);
+
+      if (bookCount === 20) {
+        var messageElement = document.getElementById("message");
+        var backButton = document.querySelectorAll(".back-button");
+
+        messageElement.textContent = "Tu prends une profonde inspiration et lui réponds avec un sourire assuré : Oui, monsieur Fleury, j'ai réussi à récupérer tous les livres de ma liste. Son visage s éclaire de soulagement tandis qu il te félicite pour ton succès dans cette quête livresque. Il te demande ensuite de régler le montant total de tes achats avec les pièces de monnaie que tu possèdes. Après un rapide échange, tu lui tends les dernières pièces qu'il te reste. Avec bienveillance, Monsieur Fleury te rend alors deux pièces supplémentaires en guise de monnaie rendue. Garde-les précieusement, tu pourrais en avoir besoin durant ton année à Poudlard, te dit-il d'un air bienveillant.";
+        messageElement.style.display = "block";
+        for (var i = 0; i < backButton.length; i++) {
+          backButton[i].style.display = "block";
+        }
+        bookCountInput.disabled = true;
+      } else {
+        var backButton = document.querySelectorAll(".back-button");
+        for (var i = 0; i < backButton.length; i++) {
+          backButton[i].style.display = "block";
+        }
+        alert("Ce n'est pas le bon nombre de livres pour Poudlard !");
+      }
+
+      return false;
+    }
+
+    function goBackToBooks() {
+      window.location.href = "boutiquelivres2.html";
+    }
+
+    function goBackToTraverse() {
+      window.location.href = "chemintraverse2.html";
+    }
+  </script>
+</body>
+
+</html>

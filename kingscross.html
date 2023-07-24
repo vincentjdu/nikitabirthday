@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>À la recherche de la voie 9 3/4</title>
+  <link href="https://fonts.googleapis.com/css2?family=Courgette&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: "Courgette", cursive;
+      background-image: url("https://a.travel-assets.com/findyours-php/viewfinder/images/res70/166000/166765-Kings-Cross-St-Pancras.jpg");
+      background-size: cover;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: rgba(255, 255, 255, 0.8);
+      border-radius: 8px;
+    }
+
+    h2 {
+      font-size: 32px;
+      color: #4CAF50;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 18px;
+      line-height: 1.6;
+      margin-bottom: 15px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 18px;
+      font-family: "Courgette", cursive;
+      background-color: #4CAF50;
+      color: #FFFFFF;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin: 5px;
+    }
+
+    /* Ajoutez une marge négative pour le bouton 9 */
+    .quai09-button {
+      margin-right: -88px;
+    }
+
+    .hidden-button {
+      opacity: 0;
+      padding: 1px 2px;
+      margin-right: -10px;
+      margin-left: 84px;
+      font-size: 5;
+
+    }
+    .play-button {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      cursor: pointer;
+      background-color: #4b4b4b;
+      color: #000000;
+      padding: 5px 10px;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+
+<body>
+  <audio id="ambianceSonore">
+    <source src="C:\Users\Vincent\Desktop\01-08\Sons\kingscross.mp3" type="audio/mpeg">
+    <!-- Ajoutez d'autres sources si nécessaire pour une compatibilité avec différents navigateurs -->
+    <!-- Par exemple : <source src="chemin/vers/mon-fichier-audio.ogg" type="audio/ogg"> -->
+  </audio>
+  <div class="play-button" onclick="toggleAmbianceSonore()">Play / Pause</div>
+  <div class="container">
+    <h2>À la recherche de la voie 9 3/4</h2>
+    <p>Tu te retrouves instantanément transporté à la gare Kings Cross. Une foule de moldus, indifférente à ta présence, grouille dans la gare animée. Les bruits et les odeurs se mêlent dans une cacophonie déroutante, mais tu gardes ton sang-froid en suivant les indications pour te rendre à la voie 9 3/4, cette fameuse voie légendaire qui échappe aux yeux non avertis.</p>
+    <p>Tu te souviens que cette gare possède une voie spéciale et que les touristes du monde entier viennent se prendre en photo devant l'entrée. Ne sachant pas vraiment où chercher, tu te résous à faire la queue avec les touristes.</p>
+    <p>Tu repères la file d'attente, tu patientes pendant une longue heure, et vient ton moment. Tu t'élances devant les yeux étonnés de la foule amassée. Dans un élan assuré, tu fonces vers la paroi du mur, partagé entre le doute et l'espoir d'avoir enfin trouvé la voie 9 3/4. Tout à coup, tu percutes le mur avec force, réalisant que ce n'était pas la véritable voie magique. Tes affaires s'envolent dans un désordre momentané, tandis que les passants s'approchent avec inquiétude pour te relever. Tu te redresses en souriant gêné, rassurant tes secouristes que tu vas bien, bien que déçu de ne pas avoir trouvé ce que tu cherchais. La quête pour la voie 9 3/4 continue, animée par l'énigme persistante de son emplacement caché dans la gare animée de Kings Cross.</p>
+    <p>Le doute s'immisce en toi... Cette aventure étonnante était-elle une simple farce ou une réalité cachée ? Tu te lances à la recherche de réponses, poussé par la curiosité et l'espoir de vivre ton aventure magique. Tu entames ta quête à la recherche de la vérité cachée et des mystères qui se dissimulent dans l'ombre de la voie 9 3/4.</p>
+
+    <!-- Boutons des quais -->
+    <button onclick="quai('01')">Quai 01</button>
+    <button onclick="quai('02')">Quai 02</button>
+    <button onclick="quai('03')">Quai 03</button>
+    <button onclick="quai('04')">Quai 04</button>
+    <button onclick="quai('05')">Quai 05</button>
+    <button onclick="quai('06')">Quai 06</button>
+    <button onclick="quai('07')">Quai 07</button>
+    <button onclick="quai('08')">Quai 08</button>
+    <button class="quai09-button" onclick="quai('quai09')">Quai 09</button>
+    <button class="hidden-button" onclick="hiddenQuai()">3</button>
+    <button onclick="quai('10')">Quai 10</button>
+
+    <!-- Texte contextuel du quai -->
+    <p id="quaiDescription"></p>
+  </div>
+
+  <script>
+    function quai(quaiNumber) {
+      var quaiDescription = document.getElementById("quaiDescription");
+      switch (quaiNumber) {
+        case '01':
+          quaiDescription.textContent = "Tu arrives sur le quai 01. C'est un quai animé où les voyageurs se préparent à embarquer dans le train pour différentes destinations. Des familles se disent au revoir, des voyageurs pressés se dirigent vers leur wagon, et les bruits joyeux de la gare remplissent l'air";
+          break;
+        case '02':
+          quaiDescription.textContent = "En arrivant sur le quai 02, tu remarques un train à destination d'une petite ville pittoresque. Ce quai est moins fréquenté, mais l'atmosphère détendue et sereine te met à l'aise. Des voyageurs se promènent avec des bagages à la main, tandis que d'autres discutent en attendant le départ du train.";
+          break;
+        case '03':
+          quaiDescription.textContent = "Le quai 03 est bondé de voyageurs pressés. C'est un point de départ pour un train rapide qui relie la gare Kings Cross à une grande métropole. Les annonces résonnent dans l'enceinte de la gare, te rappelant de ne pas oublier tes effets personnels.";
+          break;
+        case '04':
+          quaiDescription.textContent = "Sur le quai 04, un train à vapeur à l'ancienne attire ton attention. C'est une attraction touristique populaire, offrant des visites pittoresques à travers la campagne anglaise. Des voyageurs nostalgiques montent à bord, prêts à vivre une expérience ferroviaire unique. Tu te demandes si tu devrais aussi embarquer dans cette aventure pittoresque et nostalgique.";
+          break;
+        case '05':
+          quaiDescription.textContent = "Tu arrives sur le quai 05, qui est le point de départ d'un train international. Des voyageurs de diverses nationalités se mélangent, parlant différentes langues et partageant leurs histoires de voyage. L'atmosphère est empreinte d'une excitante sensation d'aventure et de découverte. Tu te sens attiré par ce mélange culturel et tu te demandes quelles histoires fascinantes pourraient être partagées lors de ce voyage.";
+          break;
+        case '06':
+          quaiDescription.textContent = "Le quai 06 est bordé de commerces et de boutiques vendant des souvenirs et des collations. Tu te balades, cherchant des articles intéressants à emporter avec toi. C'est un endroit idéal pour trouver des cadeaux uniques avant de partir en voyage.";
+          break;
+        case '07':
+          quaiDescription.textContent = "Arrivant sur le quai 07, qui est le point de départ d'un train express à grande vitesse. Des passagers d'affaires se pressent, se concentrant sur leurs téléphones et leurs ordinateurs portables, prêts à profiter du voyage pour travailler en chemin.";
+          break;
+        case '08':
+          quaiDescription.textContent = "Sur le quai 08, un train de nuit attend son départ. Des voyageurs se préparent à passer la nuit dans le train, confortablement installés dans leurs cabines. C'est un quai calme et reposant, idéal pour ceux qui souhaitent voyager pendant leur sommeil.";
+          break;
+        case 'quai09':
+          quaiDescription.textContent = "Tu arrives enfin sur le quai 09. C'est étrangement calme et vide, te laissant avec une sensation de mystère. Tu te demandes s'il est en travaux ou simplement moins fréquenté. Pourtant, quelque chose te dit que c'est peut-être là que tu trouveras enfin la fameuse voie 9 3/4...";
+          break;
+        case '10':
+          quaiDescription.textContent = "Sur le quai 10, c'est l'effervescence. C'est un point de départ pour des trains régionaux et des trajets courts. Des voyageurs locaux se dirigent vers leur destination quotidienne, et des étudiants rentrent chez eux après une journée de cours.";
+          break;
+        case '11':
+          quaiDescription.textContent = "Sur le quai 11, tu remarques un train à vapeur à l'ancienne qui attire ton attention. C'est une attraction touristique populaire, offrant des visites pittoresques à travers la campagne anglaise. Des voyageurs nostalgiques montent à bord, prêts à vivre une expérience ferroviaire unique.";
+          break;
+        case '12':
+          quaiDescription.textContent = "Le quai 12 est bordé de commerces et de boutiques vendant des souvenirs et des collations. Tu te balades, cherchant des articles intéressants à emporter avec toi. C'est un endroit idéal pour trouver des cadeaux uniques avant de partir en voyage. Le quai est animé de voyageurs qui discutent joyeusement de leurs aventures passées et futures, créant une atmosphère chaleureuse et accueillante.";
+          break;
+        default:
+          quaiDescription.textContent = "Vous vous tenez sur un quai de gare typique, avec des voyageurs qui attendent patiemment leur train. L'atmosphère est chargée d'excitation et de promesses d'aventures à venir. C'est un lieu où les histoires se croisent et où les rêves de voyage prennent vie.";
+      }
+    }
+
+    function hiddenQuai() {
+      // Redirige vers la nouvelle page html
+      window.location.href = "voi93quart.html";
+    }
+    var ambianceSonore = document.getElementById('ambianceSonore');
+    var isPlaying = false;
+
+    // Fonction pour démarrer ou arrêter l'ambiance sonore
+    function toggleAmbianceSonore() {
+      if (!isPlaying) {
+        ambianceSonore.play();
+      } else {
+        ambianceSonore.pause();
+      }
+      isPlaying = !isPlaying;
+    }
+  </script>
+</body>
+
+</html>

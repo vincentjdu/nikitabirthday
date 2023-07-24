@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Escape Game Harry Potter - Liste des Fournitures</title>
+  <link href="https://fonts.googleapis.com/css2?family=Courgette&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: "Courgette", cursive;
+      background-image: url("https://static.posters.cz/image/750/toiles-harry-potter-hogwarts-school-list-i111062.jpg");
+      background-size: cover;
+      }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #fffbe9; /* Couleur claire pour l'intérieur du parchemin */
+      border: 10px solid #fffbe9; /* Bordure foncée pour délimiter le parchemin */
+      box-shadow: 5px 5px 5px #D2B48C; /* Ombre pour donner du relief au parchemin */
+    }
+
+    .message {
+      font-size: 32px;
+      color: #4CAF50;
+      margin-bottom: 20px;
+    }
+
+    .content {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    .blanks {
+      font-size: 24px;
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    input {
+      width: 200px;
+      padding: 5px;
+      font-size: 24px;
+      text-align: center;
+    }
+
+    .logo {
+      display: inline-block;
+      width: 30px;
+      height: 30px;
+      margin: 5px;
+    }
+
+    .logo-vert {
+      background-color: green;
+    }
+
+    .logo-rouge {
+      background-color: red;
+    }
+
+    .continuer-button {
+      display: none;
+      margin-top: 20px;
+      padding: 15px;
+      font-size: 24px;
+      background-color: #4CAF50;
+      color: #FFFFFF;
+      border-radius: 8px;
+      cursor: pointer;
+      text-decoration: none; /* Enlever le soulignement du texte */
+      transition: background-color 0.3s;
+    }
+
+    .continuer-button.show {
+      display: block;
+    }
+
+    .continuer-button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <audio id="ambianceSonore">
+    <source src="C:\Users\Vincent\Desktop\01-08\Sons\crayon.mp3" type="audio/mpeg">
+    <!-- Ajoutez d'autres sources si nécessaire pour une compatibilité avec différents navigateurs -->
+    <!-- Par exemple : <source src="chemin/vers/mon-fichier-audio.ogg" type="audio/ogg"> -->
+  </audio>
+  <div class="play-button" onclick="toggleAmbianceSonore()">Play / Pause</div>
+   <div class="container">
+    <div class="message">
+      Félicitations !
+    </div>
+    <div class="content">
+      Tu as pris la bonne décision en acceptant l'invitation à Poudlard. Tu vas maintenant faire partie d'un monde magique extraordinaire !
+    </div>
+    <div class="content">
+      <p>Avant de commencer ton aventure, tu devras te procurer les fournitures scolaires nécessaires pour la rentrée à Poudlard.</p>
+      <p>Malheureusement il semblerait qu'un sorcier mal intentionné ai modifié cette liste à l'aide d'un sort...</p>
+      <p> Il va falloir que tu devines par toi même quelles sont les objets que tu dois acheter dans l'immédiat.</p>
+      <p> Il te faudra cette liste complète afin de te rendre au Chemin de Traverse.</p>
+    </div>
+    <div class="blanks">
+      <p>Liste des fournitures scolaires à acheter :</p>
+      <p>Virga Magica : <input type="text" id="inputBaguette" onkeyup="verifierReponse('baguette magique', 'inputBaguette', 'logoBaguette')"><span class="logo" id="logoBaguette"></span></p>
+      <p>Scopa Volans : <input type="text" id="inputBalai" onkeyup="verifierReponse('balai volant', 'inputBalai', 'logoBalai')"><span class="logo" id="logoBalai"></span></p>
+      <p>Caldarium : <input type="text" id="inputPotion" onkeyup="verifierReponse('chaudron', 'inputPotion', 'logoPotion')"><span class="logo" id="logoPotion"></span></p>
+      <p>Vestis Scholastica : <input type="text" id="inputUniforme" onkeyup="verifierReponse('uniforme scolaire', 'inputUniforme', 'logoUniforme')"><span class="logo" id="logoUniforme"></span></p>
+      <p>Libri Scholastici : <input type="text" id="inputLivres" onkeyup="verifierReponse('livres de sorts', 'inputLivres', 'logoLivres')"><span class="logo" id="logoLivres"></span></p>
+    </div>
+    <div class="continuer-button" onclick="afficherPageSuivante()">Continuer</div>
+  </div>
+
+  <script>
+    function verifierReponse(reponseAttendue, idInput, idLogo) {
+      var champSaisie = document.getElementById(idInput);
+      var logo = document.getElementById(idLogo);
+
+      var reponseUtilisateur = champSaisie.value.toLowerCase().trim();
+      if (reponseUtilisateur === reponseAttendue) {
+        logo.classList.remove('logo-rouge');
+        logo.classList.add('logo-vert');
+        champSaisie.disabled = true;
+        verifierToutesReponses();
+      } else {
+        logo.classList.remove('logo-vert');
+        logo.classList.add('logo-rouge');
+      }
+    }
+
+    function verifierToutesReponses() {
+      var logos = document.getElementsByClassName('logo-vert');
+      var boutonContinuer = document.querySelector('.continuer-button');
+
+      if (logos.length === 5) {
+        boutonContinuer.classList.add('show');
+      }
+    }
+
+    function afficherPageSuivante() {
+         window.location.href = "Page3-2.html";
+           }
+           var ambianceSonore = document.getElementById('ambianceSonore');
+    var isPlaying = false;
+
+    // Fonction pour démarrer ou arrêter l'ambiance sonore
+    function toggleAmbianceSonore() {
+      if (!isPlaying) {
+        ambianceSonore.play();
+      } else {
+        ambianceSonore.pause();
+      }
+      isPlaying = !isPlaying;
+    }
+  </script>
+</body>
+</html>

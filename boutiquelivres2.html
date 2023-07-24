@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Livres pour Poudlard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Courgette&display=swap" rel="stylesheet">
+  <style>
+    /* Utilise la police Courgette pour le texte principal de la page */
+    body {
+      font-family: "Courgette", cursive;
+      background-image: url("https://cdn.unitycms.io/images/7Q-1SHO64B8AqYPtQIvWOv.jpg?op=ocroped&val=1200,1200,1000,1000,0,0&sum=-hH38tQY8T0");
+      background-size: cover;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: rgba(255, 255, 255, 0.9);
+      border-radius: 8px;
+    }
+
+    h2 {
+      font-size: 32px;
+      color: #4CAF50;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 18px;
+      line-height: 1.6;
+      margin-bottom: 15px;
+    }
+
+    /* Style pour les boutons des livres */
+    .book-button {
+      padding: 10px 20px;
+      font-size: 18px;
+      background-color: #4CAF50;
+      color: #FFFFFF;
+      border: none;
+      border-radius: 8px;
+      margin: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .book-button-clicked {
+      background-color: #ddd;
+      color: #666;
+      cursor: default;
+    }
+
+    .book-button:hover {
+      background-color: #45a049;
+    }
+
+    /* Style pour le bouton "Revenir à la boutique" */
+    .return-button {
+      padding: 10px 20px;
+      font-size: 18px;
+      background-color: #4CAF50;
+      color: #FFFFFF;
+      border: none;
+      border-radius: 8px;
+      margin: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      display: none;
+    }
+
+    .return-button:hover {
+      background-color: #45a049;
+    }
+
+    /* Style pour la minuterie */
+    .timer {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      background-color: #4CAF50;
+      color: #FFFFFF;
+      padding: 8px 12px;
+      border-radius: 4px;
+    }
+    .success-text {
+      font-size: 24px;
+      color: #4CAF50;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h2>Récupérer les livres pour Poudlard</h2>
+    <p>Tu te faufile à travers la foule de fan. Tu arrives face une large bibliothèque. Tu te sers de la liste que monsieur Fleury t'as donné et tu te met en quête des livres. La tache s'avère difficile, l'armoire bouge toute seule très souvent et tu dois te dépercher pour récupérer tout les livres.</p>
+
+    <!-- Boutons pour les livres -->
+    <button class="book-button" onclick="addBook(this, 'Le Guide des Sortilèges Pratiques')">Le Guide des Sortilèges Pratiques</button>
+    <button class="book-button" onclick="addBook(this, 'Les Forces Mystérieuses')">Les Forces Mystérieuses</button>
+    <button class="book-button" onclick="addBook(this, 'Histoire de la Magie')">Histoire de la Magie</button>
+    <button class="book-button" onclick="addBook(this, 'Métamorphose pour les Débutants')">Métamorphose pour les Débutants</button>
+    <button class="book-button" onclick="addBook(this, 'Encyclopédie des Plantes Magiques')">Encyclopédie des Plantes Magiques</button>
+    <button class="book-button" onclick="addBook(this, 'Sortilèges et Enchantements à l Usage des Débutants')">Sortilèges et Enchantements à l'Usage des Débutants</button>
+    <button class="book-button" onclick="addBook(this, 'Théorie de la Magie')">Théorie de la Magie</button>
+    <button class="book-button" onclick="addBook(this, 'Contes de Beedle le Barde')">Contes de Beedle le Barde</button>
+    <button class="book-button" onclick="addBook(this, 'Vie et Habitat des Animaux Fantastiques')">Vie et Habitat des Animaux Fantastiques</button>
+    <button class="book-button" onclick="addBook(this, 'Potions Magiques')">Potions Magiques</button>
+    <button class="book-button" onclick="addBook(this, 'Quidditch à Travers les Âges')">Quidditch à Travers les Âges</button>
+    <button class="book-button" onclick="addBook(this, 'Transplanage et Transsubstantiation')">Transplanage et Transsubstantiation</button>
+    <button class="book-button" onclick="addBook(this, 'Défense contre les Forces du Mal')">Défense contre les Forces du Mal</button>
+    <button class="book-button" onclick="addBook(this, 'Arithmancie pour les Débutants')">Arithmancie pour les Débutants</button>
+    <button class="book-button" onclick="addBook(this, 'L Art des Potions')">L'Art des Potions</button>
+    <button class="book-button" onclick="addBook(this, 'Étude des Runes Anciennes')">Étude des Runes Anciennes</button>
+    <button class="book-button" onclick="addBook(this, 'Fabrication de Balais')">Fabrication de Balais</button>
+    <button class="book-button" onclick="addBook(this, 'Astronomie pour les Débutants')">Astronomie pour les Débutants</button>
+    <button class="book-button" onclick="addBook(this, 'Les Maléfices pour les Débutants')">Les Maléfices pour les Débutants</button>
+    <button class="book-button" onclick="addBook(this, 'L Art du Métamorphomage')">L'Art du Métamorphomage</button>
+
+   <!-- Bouton pour revenir à la boutique -->
+   <button id="returnButton" class="return-button" onclick="returnToShop()">Revenir à la boutique</button>
+
+   <!-- Texte de réussite caché par défaut -->
+   <div class="success-text" id="successText" style="display: none;">Félicitations ! Tu as réussi à récupérer tous les livres pour Poudlard.</div>
+
+   <!-- Minuterie de 30 secondes -->
+   <div class="timer" id="timer">30s</div>
+ </div>
+
+  <script>
+    var books = new Set([
+      "Le Guide des Sortilèges Pratiques",
+      "Les Forces Mystérieuses",
+      "Histoire de la Magie",
+      "Métamorphose pour les Débutants",
+      "Encyclopédie des Plantes Magiques",
+      "Sortilèges et Enchantements à l'Usage des Débutants",
+      "Théorie de la Magie",
+      "Contes de Beedle le Barde",
+      "Vie et Habitat des Animaux Fantastiques",
+      "Potions Magiques",
+      "Quidditch à Travers les Âges",
+      "Transplanage et Transsubstantiation",
+      "Défense contre les Forces du Mal",
+      "Arithmancie pour les Débutants",
+      "L'Art des Potions",
+      "Étude des Runes Anciennes",
+      "Fabrication de Balais",
+      "Astronomie pour les Débutants",
+      "Les Maléfices pour les Débutants",
+      "L'Art du Métamorphomage"
+    ]);
+
+    var clickedBooks = new Set();
+    var seconds = 30;
+    var timerElement = document.getElementById('timer');
+    var returnButton = document.getElementById('returnButton');
+
+    // Fonction pour ajouter un livre au panier
+    function addBook(button, book) {
+      clickedBooks.add(book);
+      button.classList.add('book-button-clicked');
+      checkAllBooksClicked();
+    }
+// Fonction pour vérifier si tous les livres ont été cliqués
+function checkAllBooksClicked() {
+      if (clickedBooks.size === books.size) {
+        clearTimeout(timer);
+        timerElement.style.display = 'none';
+        returnButton.style.display = 'block';
+        successText.style.display = 'block'; // Afficher le texte de réussite
+      }
+    }
+
+    // Fonction pour revenir à la boutique
+    function returnToShop() {
+      window.location.href = "boutiquelivres.html";
+    }
+
+    // Minuterie
+    function updateTimer() {
+      seconds--;
+      if (seconds >= 0) {
+        timerElement.innerHTML = seconds + 's';
+        timer = setTimeout(updateTimer, 1000);
+      } else {
+        // Redirection vers la page précédente si la minuterie atteint 0
+        window.location.href = "boutique.html";
+      }
+    }
+
+    // Lancer la minuterie au chargement de la page
+    updateTimer();
+  </script>
+</body>
+
+</html>

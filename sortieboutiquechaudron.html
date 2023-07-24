@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Escape Game Harry Potter - L'Énigme de Poudlard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Courgette&display=swap" rel="stylesheet">
+  <style>
+    /* Utilise la police Courgette pour le texte principal de la page */
+    body {
+      font-family: "Courgette", cursive;
+      background-image: url("https://static.wikia.nocookie.net/harrypotter/images/f/ff/Les_Potions_de_grands_pouvoirs.jpg/revision/latest/scale-to-width-down/720?cb=20090818205300&path-prefix=fr");
+      background-size: cover;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: rgba(214, 214, 214, 0.9);
+      border-radius: 8px;
+    }
+    .start-button {
+      display: block;
+      width: 200px;
+      margin: 0 auto;
+      padding: 15px;
+      background-color: #4CAF50;
+      color: #FFFFFF;
+      text-align: center;
+      text-decoration: none;
+      font-size: 24px;
+      border-radius: 8px;
+      transition: background-color 0.3s;
+    }
+    .start-button:hover {
+      background-color: #0d250f;
+    }
+    /* Augmente la taille de la police des titres h2 */
+    h2 {
+      font-size: 24px; /* Double la taille de la police des titres h2 */
+    }
+    /* Augmente la taille de la police des paragraphes */
+    p {
+      font-size: 18px; /* Double la taille de la police des paragraphes */
+    }
+    /* Augmente la taille de la police des liens */
+    a {
+      font-size: 24px; /* Met la taille de la police des liens à 32px */
+    }
+    /* Personnalise la taille du logo */
+    .logo {
+      max-width: 200px; /* Ajuste cette valeur selon la taille souhaitée */
+      display: block;
+      margin: 0 auto 20px;
+    }
+    .play-button {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      cursor: pointer;
+      background-color: #4b4b4b;
+      color: #000000;
+      padding: 5px 10px;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+    <audio id="ambianceSonore">
+    <source src="C:\Users\Vincent\Desktop\01-08\Sons\clochette.mp3" type="audio/mpeg">
+    <!-- Ajoutez d'autres sources si nécessaire pour une compatibilité avec différents navigateurs -->
+    <!-- Par exemple : <source src="chemin/vers/mon-fichier-audio.ogg" type="audio/ogg"> -->
+  </audio>
+  <div class="play-button" onclick="toggleAmbianceSonore()">Play / Pause</div>
+  <div class="container">
+    <h2>Tu as résolu l'énigme !</h2>
+    
+    <p>Avec un sourire triomphant, tu t'approches du comptoir où se tient toujours Monsieur Mulpepper, le gérant de la Ménagerie Magique. Tes yeux brillent d'une satisfaction teintée de fierté lorsque tu lui murmures la solution de l'énigme. Un éclat de joie illumine le visage du vieil homme aux cheveux gris et bouclés, qui ne cache pas son admiration pour ton esprit ingénieux.</p>
+        
+    <p>"Bien joué, jeune sorcier ! Félicitations d'avoir percé le secret de l'énigme des chaudrons magiques," s'exclame-t-il chaleureusement. "Ta logique et ton intelligence feront de toi un véritable passionné d'art de la potion."</p>
+        
+    <p>Satisfait de ta réponse, Monsieur Mulpepper attrape délicatement l'un des chaudrons posés sur le comptoir. Le chaudron en cuivre brille d'une lueur magique, comme s'il attendait patiemment son futur propriétaire. Le gérant te tend le précieux récipient en échange de quelques pièces de monnaie.</p>
+        
+    <p>"C'est avec grand plaisir que je te remets ce chaudron magique. Il te sera d'une aide précieuse dans tes futurs exploits magiques," annonce-t-il avec bienveillance.</p>
+        
+    <p>Tu t'empresses de saisir le chaudron entre tes mains, sentant son aura mystique te parcourir. Un frisson d'émotion te traverse alors que tu réalises la valeur de cet objet tant convoité par les sorciers et sorcières en quête d'excellence dans l'art de la potion.</p>
+        
+    <p>"Prends-en grand soin, car chaque chaudron a son histoire et sa magie propre. Que tes potions soient empreintes de réussite et de merveilleuses découvertes," te souhaite Monsieur Mulpepper avec un sourire bienveillant.</p>
+        
+    <p>Le chaudron maintenant en ta possession, tu te sens prêt à poursuivre ton aventure magique. Avec le précieux chaudron entre tes bras, tu t'apprêtes à quitter la boutique.</p>
+        
+    
+
+    <a class="start-button" href="chemintraverse2.html">Retourner au chemin de traverse</a>
+  </div>
+  <script>
+    var ambianceSonore = document.getElementById('ambianceSonore');
+    var isPlaying = false;
+
+    // Fonction pour démarrer ou arrêter l'ambiance sonore
+    function toggleAmbianceSonore() {
+      if (!isPlaying) {
+        ambianceSonore.play();
+      } else {
+        ambianceSonore.pause();
+      }
+      isPlaying = !isPlaying;
+    }
+  </script>
+  </body>
+</html>
+

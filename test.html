@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Escape Game Harry Potter - Boutique de Chaudrons</title>
+  <link href="https://fonts.googleapis.com/css2?family=Courgette&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: "Courgette", cursive;
+      background-image: url("https://png.pngtree.com/thumb_back/fw800/background/20230518/pngtree-the-candy-shop-at-gordon-s-wizarding-world-image_2536653.png");
+      background-size: cover;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: rgba(105, 105, 105, 0.9);
+      border-radius: 8px;
+    }
+
+    h2 {
+      font-size: 32px;
+      color: #8c933f;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 18px;
+      line-height: 1.6;
+      margin-bottom: 15px;
+    }
+
+    /* Ajout du style pour le bouton Play/Pause */
+    .audio-controls {
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      z-index: 9999;
+    }
+
+    .play-pause-button {
+      background-color: #4b4b4b;
+      color: #ffffff;
+      font-size: 16px;
+      padding: 8px 12px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-family: "Courgette", cursive;
+    }
+    /* Style pour le bouton Continuer */
+    .continuer-button {
+      display: none;
+      margin-top: 20px;
+      padding: 15px;
+      font-size: 24px;
+      background-color: #4CAF50; /* Couleur verte */
+      color: #FFFFFF;
+      border-radius: 8px;
+      cursor: pointer;
+      text-decoration: none;
+      text-align: center; /* Centrer le texte */
+      width: 200px; /* Largeur du bouton */
+      margin: 0 auto; /* Centre le bouton horizontalement */
+      transition: background-color 0.3s;
+    }
+
+    .continuer-button.show {
+      display: block;
+    }
+
+    .continuer-button:hover {
+      background-color: #45a049;
+    }
+    /* Style pour le formulaire de réponse */
+    #inputReponse {
+      width: 200px; /* Largeur du formulaire */
+      height: 25px; /* Hauteur du formulaire */
+      font-size: 18px;
+      text-align: center;
+      margin: 0 auto; /* Centre le formulaire horizontalement */
+      display: block; /* Pour que le formulaire prenne toute la largeur */
+    }
+  </style>
+</head>
+<body>
+  <audio id="ambianceSonore" src="C:\Users\Vincent\Desktop\01-08\Sons\clochette.mp3"></audio>
+  <div class="audio-controls">
+    <button class="play-pause-button" id="playPauseButton" onclick="toggleAmbianceSonore()">Play</button>
+  </div>
+  <div class="container">
+    <div class="enigme">
+    <h2>Bienvenue à la Ménagerie magique !</h2>
+    <p>Alors que tu pénétres dans la Ménagerie Magique, l'air est empli d'une aura mystérieuse et envoûtante. Les étagères débordent de chaudrons en tout genre, d'accessoires magiques pour les créatures fantastiques, et de cages mystérieuses renfermant des animaux magiques.</p>
+    <p>Au bout du comptoir, se tient un homme aux cheveux gris et bouclés, arborant des lunettes en demi-lune. C'est Monsieur Mulpepper, le gérant de la boutique. Son regard pétillant trahit une passion inébranlable pour les créatures magiques et leur univers fascinant. Tu ne peux t'empêcher de sentir une certaine excitation mêlée d'une pointe d'appréhension face à l'inconnu qui t'attend dans cet endroit extraordinaire.</p>
+    <p>Le comptoir en bois massif est jonché de parchemins griffonnés, de plumes en tout genre, et d'objets aux propriétés étranges. Monsieur Mulpepper t'adresse un sourire chaleureux, témoignant de son accueil bienveillant à chaque visiteur qui franchit le seuil de son établissement magique.</p>
+    <p>Tu t'adresses à lui en lui montrant ta liste de fournitures scolaires. Monsieur Mulpepper se penche en arrière en se tenant le menton de façon interloqué.</p>
+   <p>Il s'adresse à toi de façon mystérieuse. "L'art de la potion est une chose délicate et exigeante. Avant de te voir confier un chaudron magique en provenance de notre boutique, il te faudra faire preuve d'une logique sans faille.</p>
+   <p> Tel un alchimiste en quête de perfection, tu devras résoudre une énigme et faire preuve d'ingéniosité pour mériter le précieux chaudron. Les chaudrons magiques renferment le savoir ancestral des potions, des philtres d'amour aux élixirs de guérison.</p>
+   <p> N'oublie pas que chaque chaudron est unique, façonné avec soin par d'anciens artisans sorciers. Le tien sera un compagnon fidèle dans ton parcours magique.</p>
+   <p> Sache que chez nous, la magie s'entremêle avec la sagesse, et la curiosité avec l'apprentissage. "</p>
+     <p> Il sort alors un petit papier d'un chaudron posé sur le comptoir et te le tend avant de repartir lustrer des fioles aux formes étranges.</p>
+     <p> Inscriptions sur le papier : Dans une salle mystérieuse, il y a trois chaudrons magiques. Le premier chaudron peut contenir 5 litres de potion, le deuxième 11 litres et le troisième 17 litres. Tu dois utiliser ces trois chaudrons pour obtenir exactement 8 litres de potion. Tu peux remplir les chaudrons, les vider et les utiliser comme récipients. Les sorts et enchantements ne sont pas autorisés. Comment réussir cette prouesse ? Trouve le nombre mystère qui te permettra d'accomplir cette tâche.</p>
+    </div>
+    <div class="reponse">
+      <input type="text" id="inputReponse" onkeyup="verifierReponse()">
+    </div>
+    <div class="continuer-button" onclick="redirigerVersNouvellePage()">Continuer</div>
+  </div>
+
+  <script>
+    function verifierReponse() {
+      var reponseUtilisateur = document.getElementById('inputReponse').value.toLowerCase().trim();
+      var boutonContinuer = document.querySelector('.continuer-button');
+
+      // Vérifier si la réponse est correcte (le nombre mystère est 5)
+      if (reponseUtilisateur === "5") {
+        boutonContinuer.classList.add('show');
+      } else {
+        boutonContinuer.classList.remove('show');
+      }
+    }
+
+    // Fonction pour rediriger vers une nouvelle page
+    function redirigerVersNouvellePage() {
+      // Remplacez "nom-de-la-nouvelle-page.html" par le nom de votre nouvelle page HTML
+      window.location.href = "nom-de-la-nouvelle-page.html";
+    }
+
+    var ambianceSonore = document.getElementById('ambianceSonore');
+    var playPauseButton = document.getElementById('playPauseButton');
+    var isPlaying = false;
+
+    // Fonction pour démarrer ou arrêter l'ambiance sonore
+    function toggleAmbianceSonore() {
+      if (isPlaying) {
+        ambianceSonore.pause();
+        playPauseButton.textContent = "Play";
+      } else {
+        ambianceSonore.play();
+        playPauseButton.textContent = "Pause";
+      }
+      isPlaying = !isPlaying;
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Escape Game Harry Potter - Accepter l'Invitation</title>
+  <link href="https://fonts.googleapis.com/css2?family=Courgette&display=swap" rel="stylesheet">
+  <style>
+    /* Utilise la police Courgette pour le texte principal de la page */
+    body {
+      font-family: "Courgette", cursive;
+      background-image: url("https://i.familiscope.fr/2000x1125/smart/2022/04/06/livres-harry-potter.jpg");
+      background-size: cover;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #FFF8DC; /* Couleur claire pour l'intérieur du parchemin */
+      border: 10px solid #FFF8DC; /* Bordure foncée pour délimiter le parchemin */
+      box-shadow: 5px 5px 5px #D2B48C; /* Ombre pour donner du relief au parchemin */
+    }
+    .question {
+      font-size: 32px; /* Taille de la police pour la question */
+      text-align: center; /* Centrer le texte */
+    }
+    .buttons {
+      text-align: center; /* Centrer les boutons */
+      margin-top: 20px; /* Marge supérieure entre les boutons et le texte */
+    }
+    .accept-button, .refuse-button {
+      display: inline-block;
+      width: 200px;
+      padding: 15px;
+      margin: 10px;
+      font-size: 24px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      text-decoration: none;
+    }
+    .accept-button {
+      background-color: #4CAF50;
+      color: #FFFFFF;
+    }
+    .accept-button:hover {
+      background-color: #45a049;
+    }
+    .refuse-button {
+      background-color: #FF6347;
+      color: #FFFFFF;
+    }
+    .refuse-button:hover {
+      background-color: #FF5733;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="question">
+       <p>Tu es sur le point d'embarquer pour une expérience extraordinaire, mais avec une grande responsabilité. Le secret du monde magique doit être préservé.</p> 
+       <p>Avant de poursuivre ton aventure à Poudlard, nous te demandons de prendre conscience du monde magique auquel tu vas faire face.</p>
+       <p>Tu seras initiée à des secrets et des pouvoirs incroyables. Cependant, il est essentiel que tu comprennes l'importance de garder ce monde caché aux yeux des Moldus.</p>
+      
+    </div>
+    <div class="buttons">
+      <!-- Redirige vers la page "page_accept.html" lorsque le bouton "Accepter" est cliqué -->
+      <a class="accept-button" href="Page3-1.html">Je jure solennellement que mes intentions sont bonnes</a>
+      <!-- Redirige vers la page "page_refuse.html" lorsque le bouton "Refuser" est cliqué -->
+      <a class="refuse-button" href="page1.html">Je jure solennellement que mes intentions sont mauvaises</a>
+    </div>
+  </div>
+</body>
+</html>

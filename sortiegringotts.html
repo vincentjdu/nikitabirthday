@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Escape Game Harry Potter - L'Énigme de Poudlard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Courgette&display=swap" rel="stylesheet">
+  <style>
+    /* Utilise la police Courgette pour le texte principal de la page */
+    body {
+      font-family: "Courgette", cursive;
+      background-image: url("https://soirmag.lesoir.be/sites/default/files/dpistyles_v2/ena_16_9_extra_big/2019/03/21/node_213681/26213063/public/2019/03/21/B9718980265Z.1_20190321142032_000+GH5D7N54F.2-0.jpg?itok=ePYWAdE61553176281");
+      background-size: cover;
+    }
+    .container {
+      max-width:1000px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #FFF8DC; /* Couleur claire pour l'intérieur du parchemin */
+      border: 10px solid #FFF8DC; /* Bordure foncée pour délimiter le parchemin */
+      box-shadow: 5px 5px 5px #837159; /* Ombre pour donner du relief au parchemin */
+    }
+    .start-button {
+      display: block;
+      width: 200px;
+      margin: 0 auto;
+      padding: 15px;
+      background-color: #4CAF50;
+      color: #FFFFFF;
+      text-align: center;
+      text-decoration: none;
+      font-size: 24px;
+      border-radius: 8px;
+      transition: background-color 0.3s;
+    }
+    .start-button:hover {
+      background-color: #0d250f;
+    }
+    /* Augmente la taille de la police des titres h2 */
+    h2 {
+      font-size: 24px; /* Double la taille de la police des titres h2 */
+    }
+    /* Augmente la taille de la police des paragraphes */
+    p {
+      font-size: 18px; /* Double la taille de la police des paragraphes */
+    }
+    /* Augmente la taille de la police des liens */
+    a {
+      font-size: 24px; /* Met la taille de la police des liens à 32px */
+    }
+    /* Personnalise la taille du logo */
+    .logo {
+      max-width: 200px; /* Ajuste cette valeur selon la taille souhaitée */
+      display: block;
+      margin: 0 auto 20px;
+    }
+    .play-button {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      cursor: pointer;
+      background-color: #4b4b4b;
+      color: #000000;
+      padding: 5px 10px;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+    <audio id="ambianceSonore">
+    <source src="C:\Users\Vincent\Desktop\01-08\Sons\gringotts.mp3" type="audio/mpeg">
+    <!-- Ajoutez d'autres sources si nécessaire pour une compatibilité avec différents navigateurs -->
+    <!-- Par exemple : <source src="chemin/vers/mon-fichier-audio.ogg" type="audio/ogg"> -->
+  </audio>
+  <div class="play-button" onclick="toggleAmbianceSonore()">Play / Pause</div>
+  <div class="container">
+    <h2>Le code est correct !</h2>
+    <p>Le gobelin te tends alors une clé en fer que tu récupères avec hésitation. Il descends de son promontoir et t'invite à le suivre. Vous rejoignez un petit quai et vous embarquez dans un chariot.
+        <p>Impressionné par le chariot en lui-même, tu remarques qu'il est taillé dans un bois sombre et poli, orné de gravures magiques étincelantes. Sur ses côtés, des runes anciennes scintillent mystérieusement. Le chariot est attaché à un rail qui semble plonger dans les profondeurs de la banque, dans un réseau de tunnels sinueux et sombres.</p>
+
+        <p>Un sourire enthousiaste se dessine sur ton visage alors que tu te glisses dans le chariot, t'installant confortablement. Avant de partir, le gobelin vérifie que tu es bien en sécurité et que tu connais le chemin à emprunter.</p>
+        
+        <p>D'un geste habile, le gobelin déclenche la mise en marche du chariot. Au début, c'est un doux balancement, mais rapidement, le chariot s'élance à grande vitesse. Tu es happé par la vitesse et l'excitation alors que tu traverses les couloirs à une vitesse incroyable.</p>
+        
+        <p>Les murs s'enchaînent dans un tourbillon de pierre et de mystère, les lumières des torches s'entrechoquent en créant un spectacle époustouflant. Le chariot fend l'air, te faisant ressentir une incroyable sensation de liberté. Tu entends les échos lointains de voix et de rires, les murmures des secrets gardés par la banque depuis des siècles.</p>
+        
+        <p>Ton cœur bat la chamade alors que tu t'engages dans une succession de virages serrés. Les gobelins que tu croises te saluent d'un signe de tête, habitués à ce spectacle intriguant. Tu te sens comme dans une course folle, prêt à affronter tous les défis.</p>
+        
+        <p>Soudain, après un dernier tournant, le chariot ralentit et s'arrête devant une imposante porte en argent massif. C'est ici que se trouve ton coffre-fort. Tu descends du chariot, les jambes encore tremblantes d'excitation, et tu te diriges vers la porte.</p>
+        
+        <p> La porte s'ouvre avec un grondement lourd, dévoilant un coffre en fer forgé portant ton nom. Tu utilises la clé magique que le gobelin t'a confiée, et avec un bruit métallique, le coffre s'ouvre.</p>
+        
+        <p> C'est un instant magique, presque irréel, lorsque tu découvres un petit tas de pièces de monnaie inconnues et un mot d'Octave. Tu prend le temps de lire ce qu'Octave a bien pu t'écrire. "J'ai laissé assez d'argent pour que tu puisses récupérer tes premières fournitures, fais en bon usage". Avec délicatesse, tu rassembles ces trésors magiques dans un petit sac que tu as trouvé dans le coffre.</p>
+        
+        <p> Le chariot t'attend, prêt à te ramener à la surface. Tu te rassieds dedans avec excitation. La course folle reprend, mais cette fois, tu te sens accompagné d'une nouvelle confiance en toi, nourrie par cette incroyable aventure.</p>
+        
+        <p> Une fois à la surface, tu quittes le chariot. Le gobelin t'ayant accompagné reprends son poste et tu te retrouves à nouveau au milieu du hall majestueux de la banque.</p>
+
+    <a class="start-button" href="chemintraverse2.html">Retourner au chemin de traverse</a>
+  </div>
+  <script>
+    var ambianceSonore = document.getElementById('ambianceSonore');
+    var isPlaying = false;
+
+    // Fonction pour démarrer ou arrêter l'ambiance sonore
+    function toggleAmbianceSonore() {
+      if (!isPlaying) {
+        ambianceSonore.play();
+      } else {
+        ambianceSonore.pause();
+      }
+      isPlaying = !isPlaying;
+    }
+  </script>
+  </body>
+</html>
+

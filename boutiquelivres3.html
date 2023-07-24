@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recherche des Vêtements pour Poudlard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Courgette&display=swap" rel="stylesheet">
+  <style>
+    body {
+        font-family: "Courgette", cursive;
+      background-image: url("https://cdn.unitycms.io/images/7Q-1SHO64B8AqYPtQIvWOv.jpg?op=ocroped&val=1200,1200,1000,1000,0,0&sum=-hH38tQY8T0");
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center center;
+      color: #000000;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    .button-container {
+      position: relative;
+      width: 300px;
+      height: 300px;
+    }
+    h1 {
+      font-size: 32px;
+      color: #4CAF50;
+      margin-bottom: 20px;
+    }
+
+    .clothing-button {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      border: none;
+      border-radius: 50%;
+      font-size: 16px;
+      font-weight: bold;
+      color: #ffffff;
+      cursor: pointer;
+    }
+
+    /* Couleurs aléatoires pour les boutons */
+    .button1 { background-color: #f44336; }
+    .button2 { background-color: #e91e63; }
+    .button3 { background-color: #9c27b0; }
+    .button4 { background-color: #673ab7; }
+    .button5 { background-color: #2196f3; }
+    .button6 { background-color: #00bcd4; }
+    .button7 { background-color: #4caf50; }
+
+    /* Message de félicitations */
+    .success-message {
+      margin-top: 24px;
+      display: none;
+      font-weight: bold;
+      color: #ffffff;
+    }
+
+    /* Bouton pour revenir à la boutique */
+    .return-button {
+      display: none;
+      padding: 10px 20px;
+      margin-top: 20px;
+      font-size: 16px;
+      background-color: #4CAF50;
+      color: #FFFFFF;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-family: "Courgette", cursive;
+    }
+
+    .return-button:hover {
+      background-color: #45a049;
+    }
+    .text-container {
+      background-color: rgba(255, 255, 255, 0.8); /* Fond gris */
+      padding: 28px;
+      border-radius: 8px;
+      font-size: 18px;
+    }
+    
+  </style>
+</head>
+<body>
+<div class="text-container">
+  <h1>À la recherche des vêtements pour Poudlard</h1>
+  <p>Tu t'approches enfin du stand où les vêtements des écoliers de Poudlard sont exposés à la vente. Ils sont entreposés sur des cintres ou des mannequins, prêts à être portés.</p>
+
+  <p>La foule grandissante dans le magasin t'empêche d'accéder facilement à ces habits. De plus, les mannequins, n'aimant pas être bousculés, bougent au gré de l'arrivée de fans indélicats.</p>
+</div>
+  <div class="button-container">
+    <button class="clothing-button button1" onclick="checkClothing(this)">Robe de sorcier</button>
+    <button class="clothing-button button2" onclick="checkClothing(this)">Cravate</button>
+    <button class="clothing-button button3" onclick="checkClothing(this)">Chemise blanche</button>
+    <button class="clothing-button button4" onclick="checkClothing(this)">Pantalon noir</button>
+    <button class="clothing-button button5" onclick="checkClothing(this)">Gilet</button>
+    <button class="clothing-button button6" onclick="checkClothing(this)">Chaussettes noires</button>
+    <button class="clothing-button button7" onclick="checkClothing(this)">Chaussures</button>
+  </div>
+
+  <p class="success-message" id="successMessage">Bravo ! Tu as reussi à récupérer tout les effets qu'il te manque.</p>
+  <button class="return-button" onclick="returnToBoutique()">Revenir à la boutique</button>
+
+  <script>
+    // Tableau pour stocker les boutons déjà cliqués
+    const clickedButtons = [];
+
+    // Fonction pour vérifier si tous les boutons ont été cliqués
+    function checkClothing(button) {
+      if (!clickedButtons.includes(button)) {
+        clickedButtons.push(button);
+        button.style.display = "none"; // Cacher le bouton cliqué
+        button.disabled = true; // Désactiver le bouton cliqué
+      }
+
+      // Vérifier si tous les boutons ont été cliqués
+      if (clickedButtons.length === 7) {
+        const successMessage = document.getElementById("successMessage");
+        const returnButton = document.querySelector(".return-button");
+        successMessage.style.display = "block";
+        returnButton.style.display = "block";
+      }
+    }
+
+    // Fonction pour revenir à la boutique
+    function returnToBoutique() {
+      // Remplacez "chemin-vers-la-boutique.html" par le chemin de la page de la boutique
+      window.location.href = "boutiquelivres4.html";
+    }
+
+    // Fonction pour déplacer les boutons aléatoirement toutes les 1 seconde
+    function moveButtons() {
+      const buttons = document.querySelectorAll(".clothing-button");
+      buttons.forEach(button => {
+        const randomX = Math.floor(Math.random() * (window.innerWidth - 50));
+        const randomY = Math.floor(Math.random() * (window.innerHeight - 50));
+        button.style.left = `${randomX}px`;
+        button.style.top = `${randomY}px`;
+        // Changement de couleur aléatoire
+        const randomColor = '#' + Math.floor(Math.random()*16777215).toString(16);
+        button.style.backgroundColor = randomColor;
+      });
+    }
+
+    // Déplacer les boutons toutes les 1 seconde
+    setInterval(moveButtons, 1000);
+  </script>
+</body>
+</html>

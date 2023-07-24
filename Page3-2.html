@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Se rendre au Chemin de Traverse</title>
+  <link href="https://fonts.googleapis.com/css2?family=Courgette&display=swap" rel="stylesheet">
+  <style>
+    /* Utilise la police Courgette pour le texte principal de la page */
+    body {
+      font-family: "Courgette", cursive;
+      background-image: url("https://www.gazette-du-sorcier.com/wp-content/uploads/2021/04/Etiquette-poudre-de-cheminette-1024x830.png");
+      background-size: cover;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #fffbe9; /* Couleur claire pour l'intérieur du parchemin */
+      border: 10px solid #fffbe9; /* Bordure foncée pour délimiter le parchemin */
+      box-shadow: 5px 5px 5px #D2B48C; /* Ombre pour donner du relief au parchemin */
+    }
+    .message {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #fffbe9; /* Couleur claire pour l'intérieur du parchemin */
+      border: 10px solid #fffbe9; /* Bordure foncée pour délimiter le parchemin */
+      box-shadow: 5px 5px 5px #fffbe9; /* Ombre pour donner du relief au parchemin */
+    }
+    .button {
+      display: block;
+      width: 200px;
+      margin: 0 auto;
+      padding: 15px;
+      background-color: #4CAF50;
+      color: #FFFFFF;
+      text-align: center;
+      text-decoration: none;
+      font-size: 18px;
+      border-radius: 8px;
+      transition: background-color 0.3s;
+    }
+    .button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Se rendre au Chemin de Traverse</h2>
+        <p>Bien... Maintenant que ta liste est complète, tu peux te rendre au chemin de traverse.
+        Le meilleur moyen de t'y rendre reste encore d'utiliser de la poudre de cheminette.</p> 
+        <p>Bien qu'indispensable il y a 19 ans, ce n'est heureusement aujourd'hui plus nécessaire.
+        Une simple formule magique suffira si tu t'approches assez des "évacuations".</p>
+        <p>Avant de poursuivre ton aventure à Poudlard, il te faut maintenant trouver l'endroit d'où lancer ce sort.
+        Les choses sont généralement bien faites dans le monde magique, le sort doit être affiché à proximité d'une évacuation.</p>
+        <p>Cherche attentivement dans ton appartement de moldu et trouve cet endroit spécifique !
+        Attention à ne pas te tromper dans l'énonciation de la formule, le dernier s'étant trompé s'est retrouvé à boire une bière sans beurre au pays des leprechauns. Bonne chance !</p>
+
+    <!-- Insérez ici un formulaire pour que l'utilisateur puisse entrer l'endroit où il doit lancer la poudre de cheminette -->
+    <form id="formCheminette">
+      <label for="endroitCheminette">Prononce la formule magique  :</label><br>
+      <input type="text" id="endroitCheminette" name="endroitCheminette" required>
+      <button type="submit" class="button">Valider</button>
+    </form>
+  </div>
+
+  <!-- Script JavaScript pour vérifier la réponse de l'utilisateur -->
+  <script>
+    document.getElementById("formCheminette").addEventListener("submit", function(event) {
+      event.preventDefault();
+      const endroitCheminette = document.getElementById("endroitCheminette").value;
+      const reponseAttendue = "the temple bar";
+
+      // Vérifie si la réponse de l'utilisateur correspond à la réponse attendue
+      if (endroitCheminette.toLowerCase() === reponseAttendue) {
+        document.body.innerHTML = `
+          <div class="container">
+            <h2>Félicitations !</h2>
+            <p class="message">Tu as prononcé la formule qu'il faut. Une flamme verte surgit comme une boule de feu et t'enveloppe en un instant. Tu fermes les yeux par réflexe et l'instant d'après tu es projetée dans un tout autre endroit...</p>
+            <a class="button" href="chemintraverse.html">Continuer</a>
+          </div>
+        `;
+      } else {
+        document.body.innerHTML = `
+          <div class="container">
+            <h2>Essayez encore !</h2>
+            <p class="message">Hmm... Ce n'est pas le bon endroit. Cherchez à nouveau dans votre appartement et trouvez l'endroit d'où lancer la poudre de cheminette.</p>
+            <form id="formCheminette">
+              <label for="endroitCheminette">Entrez l'endroit d'où lancer la poudre de cheminette :</label><br>
+              <input type="text" id="endroitCheminette" name="endroitCheminette" required>
+              <button type="submit" class="button">Valider</button>
+            </form>
+          </div>
+        `;
+      }
+    });
+  </script>
+</body>
+</html>
