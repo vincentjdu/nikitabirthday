@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+    .appartement {
+        width: 100vw;
+        height: 100vh;
+        background-image: url('https://i.pinimg.com/originals/e6/8e/5b/e68e5b27a60a6f660bd9224d77eec688.jpg');
+        background-size: cover;
+        position: relative;
+    }
+    .trace {
+        width: 20px;
+        height: 20px;
+        background-color: red;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    </style>
+</head>
+<body>
+    <div class="appartement">
+        <div class="trace" id="trace"></div>
+    </div>
+    <script>
+    let trace = document.getElementById("trace");
+
+    let xCanape = 500;  // Vous aurez à définir ces valeurs en fonction de l'emplacement du canapé sur votre image
+    let yCanape = 300;
+
+    let x = 0;
+    let y = 0;
+
+    let timer = setInterval(function() {
+        if(x < xCanape) {
+            x += 1;
+            trace.style.left = x + "px";
+        }
+        if(y < yCanape) {
+            y += 1;
+            trace.style.top = y + "px";
+        }
+        if(x >= xCanape && y >= yCanape) {
+            clearInterval(timer);
+        }
+    }, 10);
+    </script>
+</body>
+</html>
