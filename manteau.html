@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arrivée à la voie 9 3/4</title>
+  <link href="https://fonts.googleapis.com/css2?family=Courgette&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: "Courgette", cursive;
+      background-image: url("https://www.gazette-du-sorcier.com/wp-content/uploads/2015/03/jpg_Img_9333.jpg");
+      background-size: cover;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: rgba(255, 255, 255, 0.8);
+      border-radius: 8px;
+    }
+
+    h2 {
+      font-size: 32px;
+      color: #4CAF50;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 18px;
+      line-height: 1.6;
+      margin-bottom: 15px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 18px;
+      font-family: "Courgette", cursive;
+      background-color: #4CAF50;
+      color: #FFFFFF;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin: 5px;
+      display: inline-block;
+    }
+
+    .hidden-button {
+      display: none;
+    }
+
+      .play-button {
+        background-color: #ccc;
+        color: #333;
+        position: absolute;
+        top: 20px;
+        left: 20px;
+      }
+
+    .quai-description {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h2>Wagon 6</h2>
+    <p>Le sentiment d'urgence sur le quai est contagieux. Les cris des parents qui disent au revoir à leurs enfants se mélangent au son du sifflet de la gare. Tu entends même le hululement lointain d'une chouette. L'effervescence est à son comble et tu sens une étrange sensation dans ton ventre. Sans vraiment réfléchir, tu te sens irrésistiblement attiré par le wagon numéro 6. C'est comme si quelque chose t'y appelait. Tu te précipites à l'intérieur, juste au moment où le train commence à s'éloigner du quai. Tu t'engouffres dans le couloir étroit, bordé de portes en bois rougeâtre. Finalement, tu trouves un compartiment vide. Le velours rouge des sièges semble presque étinceler sous la lumière tamisée qui se dégage des lampes suspendues au plafond. Tu y déposes tes bagages et t'installes confortablement.</p>
+
+    <p> Peu de temps après, la porte du compartiment s'ouvre à nouveau. Deux autres élèves entrent. Ils te saluent avec un sourire amical avant de s'installer en face de toi. Les voix résonnent à l'intérieur du compartiment, remplissant l'espace de vie et d'animation. L'un des élèves est une fille aux cheveux bruns et aux yeux pétillants de malice, l'autre un garçon aux cheveux blonds et aux yeux bleus clairs, avec une expression calme et réfléchie. Ils engagent la conversation, évoquant avec passion leur vie à Poudlard, les cours, les professeurs et leurs amis. L'un d'eux mentionne une histoire étrange et intrigante à propos d'une carte secrète, capable de révéler les déplacements de chaque personne à l'intérieur de Poudlard.</p>
+        
+    <p>  L'évocation de cette carte, des secrets qu'elle cache et de son pouvoir, pique ta curiosité. Cependant, malgré ton envie d'en savoir plus, l'excitation de la journée, le doux mouvement du train et le brouhaha apaisant des voix t'emportent peu à peu dans les bras de Morphée.</p>
+        
+    <p>   À ton réveil, tu sens que le train ralentit. Les lumières à l'interieur sont allumées le jour semble s'assombrir, vous êtes sur le point d'arriver à destination. Les deux autres élèves ne sont plus là, mais ils ont laissé derrière eux un manteau, déposé négligemment sur le siège. Tu aperçois une lueur provenant d'une des poches extérieur de ce manteau. Que peut il y avoir à l'intérieur de cette poche."</p>
+
+    <!-- Bouton d'ambiance sonore -->
+    <button class="play-button" onclick="playPauseSound()">Play / Pause</button>
+
+    <!-- Boutons pour entrer dans les wagons -->
+    <button onclick="updateDescription('wagon4')">Laisser le manteau à sa place</button>
+    <button onclick="window.location.href = 'lacarte.html'">Fouiller le manteau</button>
+
+    <!-- Texte contextuel du quai -->
+    <p id="quaiDescription" class="quai-description"></p>
+  </div>
+
+  <script>
+    var isPlaying = false;
+    var magicSound = new Audio('Sons/poudlardex.mp3');
+
+    function playPauseSound() {
+      if (isPlaying) {
+        magicSound.pause();
+      } else {
+        magicSound.play();
+      }
+      isPlaying = !isPlaying;
+    }
+
+    function updateDescription(wagonNumber) {
+      var quaiText = document.getElementById("quaiDescription");
+      quaiText.style.display = "block"; // Rend le texte visible
+      switch (wagonNumber) {
+        case 'wagon4':
+          quaiText.textContent = "La lueur s'entensifie et tu sembles entendre ton nom provenir de la poche de ce manteau.";
+          break;
+       default:
+          quaiText.textContent = "La lueur s'entensifie et tu sembles entendre ton nom provenir de la poche de ce manteau.";
+      }
+    }
+  </script>
+</body>
+
+</html>
