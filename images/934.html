@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arrivée à la voie 9 3/4</title>
+  <link href="https://fonts.googleapis.com/css2?family=Courgette&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: "Courgette", cursive;
+      background-image: url("https://cdn-elle.ladmedia.fr/var/plain_site/storage/images/loisirs/sorties/news/harry-potter-le-poudlard-express-debarque-a-paris-3943528/95205671-1-fre-FR/Harry-Potter-le-Poudlard-Express-debarque-a-Paris.jpg");
+      background-size: cover;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: rgba(255, 255, 255, 0.8);
+      border-radius: 8px;
+    }
+
+    h2 {
+      font-size: 32px;
+      color: #4CAF50;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 18px;
+      line-height: 1.6;
+      margin-bottom: 15px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 18px;
+      font-family: "Courgette", cursive;
+      background-color: #4CAF50;
+      color: #FFFFFF;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin: 5px;
+      display: inline-block;
+    }
+
+    .hidden-button {
+      display: none;
+    }
+
+      .play-button {
+        background-color: #ccc;
+        color: #333;
+        position: absolute;
+        top: 20px;
+        left: 20px;
+      }
+
+    .quai-description {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h2>Arrivée à la voie 9 3/4</h2>
+    <p>Ton cœur tambourine avec une force exaltante dans ta poitrine alors que tu franchis résolument la barrière magique vers la voie 9 3/4. D'un moment à l'autre, tu te retrouves propulsé dans un autre monde, inconnu et pourtant incroyablement envoûtant. Tes pieds se posent sur les pavés polis du quai et tu t'arrêtes, submergé par le panorama qui s'offre à toi.</p>
+
+      <p> Le Poudlard Express se dresse fièrement devant toi. Sa structure métallique luit d'un éclat hypnotique sous les rayons de l'après-midi, l'air autour de lui vibrant de promesses d'aventures inexplorées. La vapeur qui s'échappe de son sommet forme des nuages éthérés qui se dispersent lentement dans l'air. La locomotive semble prête à partir, chaque bruit et mouvement ajoutant à l'urgence de l'atmosphère.</p>
+      
+        <p>  Le quai est une ruche d'activités. Des enfants, leurs nouvelles robes de sorcier virevoltant autour d'eux, se précipitent en riant vers le train, leurs yeux pétillant d'excitation et de merveille. Les bagages magiques flottent à travers l'air, poursuivant fidèlement leurs propriétaires dans leur hâte. Les familles se pressent pour partager leurs derniers adieux, leurs voix ajoutant au bourdonnement ambiant du quai.</p>
+      
+          <p>  L'air est saturé d'une variété de senteurs : l'odeur forte et piquante du charbon du train, le doux parfum sucré des friandises de Honeydukes, l'humidité de la gare et bien sûr, l'odeur omniprésente de magie qui semble s'imprégner dans chaque coin et recoin. Des hiboux hululent doucement dans leurs cages, leur chant ajoutant une note de sérénité à la frénésie ambiante. Tu te demandes un instant pourquoi tu n'en a pas...</p>
+      
+            <p>   Tu réalises que le train va bientôt partir. Autour de toi, les gens se hâtent à entrer, et tu sens que tu dois faire un choix rapide. Trois wagons se présentent à toi, chacun d'eux promettant une aventure différente. Mais lequel choisir ?"</p>
+
+    <!-- Bouton d'ambiance sonore -->
+    <button class="play-button" onclick="playPauseSound()">Play / Pause</button>
+
+    <!-- Boutons pour entrer dans les wagons -->
+    <button onclick="updateDescription('wagon4')">Entrer dans le wagon 4</button>
+    <button onclick="updateDescription('wagon5')">Entrer dans le wagon 5</button>
+    <button onclick="window.location.href = 'manteau.html'">Entrer dans le wagon 6</button>
+
+    <!-- Texte contextuel du quai -->
+    <p id="quaiDescription" class="quai-description"></p>
+  </div>
+
+  <script>
+    var isPlaying = false;
+    var magicSound = new Audio('Sons/poudlardex.mp3');
+
+    function playPauseSound() {
+      if (isPlaying) {
+        magicSound.pause();
+      } else {
+        magicSound.play();
+      }
+      isPlaying = !isPlaying;
+    }
+
+    function updateDescription(wagonNumber) {
+      var quaiText = document.getElementById("quaiDescription");
+      quaiText.style.display = "block"; // Rend le texte visible
+      switch (wagonNumber) {
+        case 'wagon4':
+          quaiText.textContent = "Tu te précipites à l'intérieur du wagon 4 avant son départ. Tu fais le tour de tous les compartiments, mais malheureusement, ils sont tous pleins. La quête continue.";
+          break;
+        case 'wagon5':
+          quaiText.textContent = "Comme pour le wagon 4, tu te précipites à l'intérieur du wagon 5. Tu explores chaque compartiment, mais tous sont déjà occupés par d'autres voyageurs. La recherche continue.";
+          break;
+        default:
+          quaiText.textContent = "";
+      }
+    }
+  </script>
+</body>
+
+</html>
