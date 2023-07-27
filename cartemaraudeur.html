@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+    .appartement {
+        width: 100vw;
+        height: 100vh;
+        background-image: url('images/plan.png');
+        background-size: cover;
+        position: relative;
+    }
+    .trace {
+        width: 40px;
+        height: 40px;
+        background-image: url('images/pas.png'); 
+        background-size: cover;
+        position: absolute;
+        opacity: 1;
+        transition: opacity 1s;
+    }
+    .traceCat {
+        width: 20px;
+        height: 20px;
+        background-image: url('images/chat.png');  
+        background-size: cover;
+        position: absolute;
+        opacity: 1;
+        transition: opacity 1s;
+    }
+    .fade {
+        opacity: 0 !important;
+    }
+    </style>
+</head>
+<body>
+    <div class="appartement" id="appartement"></div>
+    <script>
+    let appartement = document.getElementById("appartement");
+
+    // Traces de pas humaines
+    let startX = window.innerWidth / 1.9;  // départ du milieu de l'écran
+    let startY = 0;
+    let x = startX;
+    let y = startY;
+
+    let pas = [];
+    let count = 0;
+    let angle = 0;
+
+    let instructions = [
+        {direction: "bas", pas: 6},
+        {direction: "gauche", pas: 5},
+    ];
+
+    let currentInstruction = instructions.shift();
+
+    let timer = setInterval(function() {
+        switch(currentInstruction.direction) {
+            case "bas":
+                y += 50;
+                angle = 180;
+                break;
+            case "gauche":
+                x -= 50;
+                angle = -90;
+                break;
+        }
+
+        let trace = document.createElement("div");
+        trace.classList.add("trace");
+        trace.style.left = x + "px";
+        trace.style.top = y + "px";
+        trace.style.transform = "rotate(" + angle + "deg)";
+        appartement.appendChild(trace);
+
+        pas.push(trace);
+
+        if(pas.length > 2) {
+            let vieuxPas = pas.shift();
+            vieuxPas.classList.add('fade');
+            setTimeout(function() {
+                vieuxPas.remove();
+            }, 1100);
+        }
+
+        count++;
+
+        if(count >= currentInstruction.pas) {
+            if(instructions.length == 0) {
+                setTimeout(function() {
+                    x = startX;
+                    y = startY;
+                    instructions = [
+                        {direction: "bas", pas: 6},
+                        {direction: "gauche", pas: 5},
+                    ];
+                    count = 0;
+                    currentInstruction = instructions.shift();
+                }, 1000);  // Pause for 1 second before resetting
+            } else {
+                currentInstruction = instructions.shift();
+            }
+        }
+    }, 600);
+
+    // Traces de pas de chat
+    let startCatX = window.innerWidth;
+    let startCatY = window.innerHeight;
+    let xCat = startCatX;
+    let yCat = startCatY;
+
+    let pasCat = [];
+    let countCat = 0;
+    let angleCat = 0;
+
+    let instructionsCat = [
+        {direction: "haut", pas: 3},
+        {direction: "gauche", pas: 4},
+        {direction: "haut", pas: 6},
+    ];
+
+    let currentInstructionCat = instructionsCat.shift();
+
+    let timerCat = setInterval(function() {
+        switch(currentInstructionCat.direction) {
+            case "haut":
+                yCat -= 50;
+                angleCat = 0;
+                break;
+            case "gauche":
+                xCat -= 50;
+                angleCat = -90;
+                break;
+        }
+
+        let traceCat = document.createElement("div");
+        traceCat.classList.add("traceCat");
+        traceCat.style.left = xCat + "px";
+        traceCat.style.top = yCat + "px";
+        traceCat.style.transform = "rotate(" + angleCat + "deg)";
+        appartement.appendChild(traceCat);
+
+        pasCat.push(traceCat);
+
+        if(pasCat.length > 2) {
+            let vieuxPasCat = pasCat.shift();
+            vieuxPasCat.classList.add('fade');
+            setTimeout(function() {
+                vieuxPasCat.remove();
+            }, 1100);
+        }
+
+        countCat++;
+
+        if(countCat >= currentInstructionCat.pas) {
+            if(instructionsCat.length == 0) {
+                setTimeout(function() {
+                    xCat = startCatX;
+                    yCat = startCatY;
+                    instructionsCat = [
+                        {direction: "haut", pas: 3},
+                        {direction: "gauche", pas: 4},
+                        {direction: "haut", pas: 6},
+                    ];
+                    countCat = 0;
+                    currentInstructionCat = instructionsCat.shift();
+                }, 1000);  // Pause for 1 second before resetting
+            } else {
+                currentInstructionCat = instructionsCat.shift();
+            }
+        }
+    }, 600);
+
+    </script>
+</body>
+</html>
